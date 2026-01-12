@@ -6,8 +6,9 @@
   - [x] Subtask: Write Tests (Define `CommandDefinition` and `Registry` types)
   - [x] Subtask: Implement Feature (Create `packages/cli/src/registry/types.ts`)
   - [ ] Subtask: Implement Feature (Create `packages/cli/src/registry/types.ts`)
-- [~] Task: Implement Dynamic Discovery Logic
-  - [ ] Subtask: Write Tests (Mock file system to verify glob-based loading)
+- [x] Task: Implement Dynamic Discovery Logic 4845fed
+  - [x] Subtask: Write Tests (Mock file system to verify glob-based loading)
+  - [x] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
   - [ ] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
 - [ ] Task: Create `CommandRegistry` Singleton
   - [ ] Subtask: Write Tests (Register, retrieve, and list commands)
