@@ -5,7 +5,7 @@ export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>(['Welcome to Gemini CLI Suite']);
 
-  useInput((inputStr, key) => {
+  useInput((inputStr: string, key: any) => {
     if (key.return) {
       setHistory(prev => [...prev, `> ${input}`, `Processing: ${input}...`]);
       setInput('');
