@@ -20,10 +20,15 @@ describe('CommandRegistry', () => {
     expect(retrieved).toBe(mockCommand);
   });
 
-  it('should list all commands', () => {
+  it('should list all commands with metadata', () => {
     CommandRegistry.register(mockCommand);
     const all = CommandRegistry.list();
-    expect(all).toContain(mockCommand);
+    expect(all).toHaveLength(1);
+    expect(all[0]).toEqual(expect.objectContaining({
+      namespace: 'test',
+      name: 'run',
+      description: 'Run test'
+    }));
   });
 
   it('should handle aliases', () => {
