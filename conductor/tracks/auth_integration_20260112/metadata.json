@@ -1,0 +1,13 @@
+{
+  "id": "auth_integration_20260112",
+  "name": "Provider Authentication & Credential Management",
+  "description": "Implement secure authentication flows for Google (OAuth), OpenAI, and Claude.",
+  "status": "planned",
+  "created_at": "2026-01-12",
+  "phases": [
+    "Credential Storage & Config Persistence",
+    "Google OAuth Implementation",
+    "API Key Management (OpenAI/Claude)",
+    "Auth Commands & UI"
+  ]
+}

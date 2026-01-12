@@ -49,4 +49,28 @@ describe('GeminiAdapter', () => {
     expect(caps.name).toContain('Gemini');
     expect(caps.supportsStreaming).toBe(true);
   });
+
+  it('should support accessToken configuration', async () => {
+    // Mock global fetch
+    const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+            candidates: [{ content: { parts: [{ text: 'OAuth Response' }] } }]
+        })
+    });
+    global.fetch = mockFetch;
+    
+    const oauthAdapter = new GeminiAdapter({ accessToken: 'fake-access-token' });
+    const response = await oauthAdapter.sendMessage('Hi OAuth');
+    
+    expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('generateContent'),
+        expect.objectContaining({
+            headers: expect.objectContaining({
+                'Authorization': 'Bearer fake-access-token'
+            })
+        })
+    );
+    expect(response).toBe('OAuth Response');
+  });
 });
