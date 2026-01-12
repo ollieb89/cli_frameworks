@@ -6,6 +6,9 @@
 ## Frameworks & Libraries
 - **Terminal UI:** Ink (React-based)
 - **Command Parsing:** Custom namespace parser + Commander.js
+- **Command Discovery:** fast-glob
+- **Table Rendering:** cli-table3
+- **Interactive Input:** ink-text-input
 - **AI Integration:** Google Generative AI (@google/generative-ai)
 - **Testing:** Vitest
 
