@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { handleDevStatus } from './status';
+import { handleDevStatus } from './status.js';
 import { ProviderRegistry } from '@gemini-cli/core';
 
 // Mock ProviderRegistry

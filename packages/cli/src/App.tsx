@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Text, useInput } from 'ink';
+import { parseCommand } from './parser/CommandParser.js';
+import { handleDevStatus } from './commands/dev/status.js';
 
 export const App: React.FC = () => {
   const [input, setInput] = useState('');
@@ -7,7 +9,24 @@ export const App: React.FC = () => {
 
   useInput((inputStr: string, key: any) => {
     if (key.return) {
-      setHistory(prev => [...prev, `> ${input}`, `Processing: ${input}...`]);
+      const commandText = input.trim();
+      setHistory(prev => [...prev, `> ${commandText}`]);
+      
+      const parsed = parseCommand(commandText);
+      if (parsed) {
+        if (parsed.namespace === 'dev' && parsed.command === 'status') {
+          const output = handleDevStatus();
+          setHistory(prev => [...prev, ...output.split('\n')]);
+        } else {
+           setHistory(prev => [...prev, `Unknown command: ${parsed.namespace}:${parsed.command}`]);
+        }
+      } else {
+        if (commandText.startsWith('/')) {
+             setHistory(prev => [...prev, 'Invalid command format. Use /namespace:command']);
+        }
+        // Normal text input handling could go here
+      }
+      
       setInput('');
     } else if (key.backspace || key.delete) {
       setInput(prev => prev.slice(0, -1));
