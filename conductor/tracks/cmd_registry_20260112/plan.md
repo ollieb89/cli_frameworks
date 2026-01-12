@@ -2,7 +2,7 @@
 
 ## Phase 1: Registry Foundation & Discovery
 
-- [ ] Task: Define Command Interfaces
+- [~] Task: Define Command Interfaces
   - [ ] Subtask: Write Tests (Define `CommandDefinition` and `Registry` types)
   - [ ] Subtask: Implement Feature (Create `packages/cli/src/registry/types.ts`)
 - [ ] Task: Implement Dynamic Discovery Logic
