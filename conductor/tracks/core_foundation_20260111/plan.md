@@ -25,7 +25,7 @@
   - [ ] Subtask: Implement Feature (Create `ProviderRegistry` singleton)
 - [x] Task: Conductor - User Manual Verification 'Core Framework & FAL' 5082c93
 
-## Phase 3: CLI Shell & Command System
+## Phase 3: CLI Shell & Command System [checkpoint: f67e23f]
 
 - [x] Task: Setup Ink REPL e2afec6
   - [x] Subtask: Write Tests (Render basic ink component)
