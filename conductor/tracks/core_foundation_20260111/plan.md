@@ -1,6 +1,6 @@
 # Execution Plan: Core Foundation & Gemini CLI Integration
 
-## Phase 1: Monorepo & Infrastructure Setup
+## Phase 1: Monorepo & Infrastructure Setup [checkpoint: 092aeea]
 
 - [x] Task: Initialize Turborepo Structure 808bc89
   - [ ] Subtask: Write Tests (Check directory structure and build scripts)
@@ -12,7 +12,7 @@
 
 ## Phase 2: Core Framework & FAL
 
-- [ ] Task: Define Provider Interfaces
+- [~] Task: Define Provider Interfaces
   - [ ] Subtask: Write Tests (Mock implementation of ProviderAdapter)
   - [ ] Subtask: Implement Feature (Create `ProviderAdapter` and `ProviderCapabilities` interfaces in `packages/core`)
 - [ ] Task: Implement Gemini Adapter
