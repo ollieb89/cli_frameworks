@@ -4,6 +4,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track: Core Foundation & Gemini CLI Integration
+## [x] Track: Core Foundation & Gemini CLI Integration
 
 _Link: [./conductor/tracks/core_foundation_20260111/](./conductor/tracks/core_foundation_20260111/)_
