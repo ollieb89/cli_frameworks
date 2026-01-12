@@ -39,4 +39,4 @@
   - [x] Subtask: Write Tests (Verify command output format)
   - [x] Subtask: Implement Feature (Connect CLI command to Core status check)
   - [ ] Subtask: Implement Feature (Connect CLI command to Core status check)
-- [~] Task: Conductor - User Manual Verification 'CLI Shell & Command System' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'CLI Shell & Command System' 15fe521
