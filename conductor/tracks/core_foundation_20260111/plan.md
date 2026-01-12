@@ -10,7 +10,7 @@
   - [ ] Subtask: Implement Feature (Setup ESLint, Prettier, TypeScript config)
 - [x] Task: Conductor - User Manual Verification 'Monorepo & Infrastructure Setup' 80ad147
 
-## Phase 2: Core Framework & FAL
+## Phase 2: Core Framework & FAL [checkpoint: 3042328]
 
 - [x] Task: Define Provider Interfaces f242da5
   - [x] Subtask: Write Tests (Mock implementation of ProviderAdapter)
