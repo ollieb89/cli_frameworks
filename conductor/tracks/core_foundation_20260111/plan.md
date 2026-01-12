@@ -23,7 +23,7 @@
   - [x] Subtask: Write Tests (Register and retrieve adapters)
   - [x] Subtask: Implement Feature (Create `ProviderRegistry` singleton)
   - [ ] Subtask: Implement Feature (Create `ProviderRegistry` singleton)
-- [ ] Task: Conductor - User Manual Verification 'Core Framework & FAL' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Core Framework & FAL' (Protocol in workflow.md)
 
 ## Phase 3: CLI Shell & Command System
 
