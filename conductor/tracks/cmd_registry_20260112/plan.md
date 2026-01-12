@@ -10,8 +10,9 @@
   - [x] Subtask: Write Tests (Mock file system to verify glob-based loading)
   - [x] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
   - [ ] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
-- [~] Task: Create `CommandRegistry` Singleton
-  - [ ] Subtask: Write Tests (Register, retrieve, and list commands)
+- [x] Task: Create `CommandRegistry` Singleton fe84ed5
+  - [x] Subtask: Write Tests (Register, retrieve, and list commands)
+  - [x] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
   - [ ] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
 - [ ] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' (Protocol in workflow.md)
 
