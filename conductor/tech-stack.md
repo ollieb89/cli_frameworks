@@ -9,6 +9,7 @@
 - **Command Discovery:** fast-glob
 - **Table Rendering:** cli-table3
 - **Interactive Input:** ink-text-input
+- **Authentication:** google-auth-library, open
 - **AI Integration:** Google Generative AI (@google/generative-ai)
 - **Testing:** Vitest
 

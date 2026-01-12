@@ -41,6 +41,7 @@ A modern, extensible CLI suite for AI-powered development, featuring a Framework
 - **Namespace Command System:** An organized command hierarchy (e.g., `/dev`, `/test`, `/security`, `/project`) for intuitive navigation and execution.
 - **Dynamic Command Registry:** Automatic discovery and registration of commands from the filesystem.
 - **Global Utility Commands:** Core commands like `/help`, `/version`, and `/config` for system management.
+- **Provider Authentication:** Integrated OAuth 2.0 (Google) and secure credential management for OpenAI and Anthropic.
 - **Task Orchestration Engine:** A robust system for decomposing objectives into actionable tasks, integrated directly with Git for history and state management.
 - **Specialized AI Agents:** Autonomous agents with focused tool access, such as a Code Quality Suite and a Test Engineer.
 
