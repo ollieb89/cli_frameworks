@@ -35,7 +35,8 @@
   - [x] Subtask: Write Tests (Parse `/namespace:command` strings)
   - [x] Subtask: Implement Feature (Logic to extract namespace, command, and args)
   - [ ] Subtask: Implement Feature (Logic to extract namespace, command, and args)
-- [~] Task: Create /dev:status Command
-  - [ ] Subtask: Write Tests (Verify command output format)
+- [x] Task: Create /dev:status Command 5a2e298
+  - [x] Subtask: Write Tests (Verify command output format)
+  - [x] Subtask: Implement Feature (Connect CLI command to Core status check)
   - [ ] Subtask: Implement Feature (Connect CLI command to Core status check)
 - [ ] Task: Conductor - User Manual Verification 'CLI Shell & Command System' (Protocol in workflow.md)
