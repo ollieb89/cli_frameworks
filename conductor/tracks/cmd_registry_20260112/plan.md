@@ -15,7 +15,7 @@
 
 ## Phase 2: Global Commands Implementation
 
-- [ ] Task: Implement `/version` Command
+- [~] Task: Implement `/version` Command
   - [ ] Subtask: Write Tests (Verify output contains shared version info)
   - [ ] Subtask: Implement Feature (Standard command export in `src/commands/global/version.ts`)
 - [ ] Task: Implement `/config` Command (Basic)
