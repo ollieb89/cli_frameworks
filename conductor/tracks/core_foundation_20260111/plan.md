@@ -19,7 +19,7 @@
   - [x] Subtask: Write Tests (Mock API calls to Gemini)
   - [x] Subtask: Implement Feature (Create `GeminiAdapter` using `@google/generative-ai`)
   - [ ] Subtask: Implement Feature (Create `GeminiAdapter` using `@google/generative-ai`)
-- [ ] Task: Implement Provider Registry
+- [~] Task: Implement Provider Registry
   - [ ] Subtask: Write Tests (Register and retrieve adapters)
   - [ ] Subtask: Implement Feature (Create `ProviderRegistry` singleton)
 - [ ] Task: Conductor - User Manual Verification 'Core Framework & FAL' (Protocol in workflow.md)
