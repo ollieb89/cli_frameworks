@@ -15,6 +15,7 @@
   "dependencies": {
     "@gemini-cli/core": "workspace:*",
     "@gemini-cli/shared": "workspace:*",
+    "cli-table3": "^0.6.5",
     "commander": "^12.0.0",
     "fast-glob": "^3.3.3",
     "ink": "^4.4.1",
