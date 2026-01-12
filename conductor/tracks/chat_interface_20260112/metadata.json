@@ -1,0 +1,13 @@
+{
+  "id": "chat_interface_20260112",
+  "name": "Chat Interface & AI Streaming",
+  "description": "Implement a reactive chat mode with real-time AI streaming and multi-turn conversation support.",
+  "status": "planned",
+  "created_at": "2026-01-12",
+  "phases": [
+    "AI Client Integration",
+    "Streaming Logic Implementation",
+    "Chat TUI Component",
+    "Conversation State Management"
+  ]
+}

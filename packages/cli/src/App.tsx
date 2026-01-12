@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Box, Text, useInput } from 'ink';
 import { parseCommand } from './parser/CommandParser.js';
 import { CommandRegistry } from './registry/CommandRegistry.js';
 import { HelpSearch } from './ui/HelpSearch.js';
+import { ChatView } from './ui/ChatView.js';
+import { ProviderFactory } from './utils/ProviderFactory.js';
 
 export const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>(['Welcome to Gemini CLI Suite']);
-  const [mode, setMode] = useState<'repl' | 'help'>('repl');
+  const [mode, setMode] = useState<'repl' | 'help' | 'chat'>('repl');
+
+  const provider = useMemo(() => {
+    if (mode === 'chat') {
+        try {
+            return ProviderFactory.createDefault();
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+  }, [mode]);
 
   useInput((inputStr: string, key: any) => {
-    if (mode === 'help') {
-      if (key.escape) {
-        setMode('repl');
-      }
-      return;
-    }
+    if (mode !== 'repl') return;
 
     if (key.return) {
       const commandText = input.trim();
@@ -25,13 +33,13 @@ export const App: React.FC = () => {
       if (parsed) {
         const cmd = CommandRegistry.get(parsed.namespace, parsed.command);
         if (cmd) {
-          // Special case for interactive help
+          // Special cases for interactive modes
           if (cmd.namespace === 'global' && cmd.name === 'help' && parsed.args.includes('-i')) {
             setMode('help');
+          } else if (cmd.namespace === 'chat' && (cmd.name === 'start' || cmd.aliases?.includes('chat'))) {
+            setMode('chat');
           } else {
             // Execute command
-            // Note: handlers currently log to console. In Ink, we might want to capture this.
-            // For now, we assume they log correctly.
             cmd.handler({ _: parsed.args }).catch(err => {
                setHistory(prev => [...prev, `Error: ${err.message}`]);
             });
@@ -43,7 +51,6 @@ export const App: React.FC = () => {
         if (commandText.startsWith('/')) {
              setHistory(prev => [...prev, 'Invalid command format. Use /namespace:command']);
         }
-        // Normal text input handling could go here
       }
       
       setInput('');
@@ -62,6 +69,26 @@ export const App: React.FC = () => {
           <Text color="gray">Press ESC to exit help</Text>
         </Box>
       </Box>
+    );
+  }
+
+  if (mode === 'chat') {
+    if (!provider) {
+        return (
+            <Box flexDirection="column" padding={1}>
+                <Text color="red">Error: No provider configured.</Text>
+                <Text>Please run /auth:login google first.</Text>
+                <Box marginTop={1}>
+                  <Text color="gray">Press ESC to return to REPL</Text>
+                </Box>
+            </Box>
+        );
+    }
+    return (
+        <ChatView 
+            provider={provider} 
+            onExit={() => setMode('repl')} 
+        />
     );
   }
 

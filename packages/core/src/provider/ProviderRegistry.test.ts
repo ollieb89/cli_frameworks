@@ -6,7 +6,8 @@ describe('ProviderRegistry', () => {
   const mockProvider: ProviderAdapter = {
      getCapabilities: () => ({ name: 'mock', version: '1', supportsStreaming: false, supportsImages: false }),
      listModels: async () => [],
-     sendMessage: async () => 'mock'
+     sendMessage: async () => 'mock',
+     streamMessage: async () => {}
   };
 
   beforeEach(() => {

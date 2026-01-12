@@ -73,4 +73,25 @@ describe('GeminiAdapter', () => {
     );
     expect(response).toBe('OAuth Response');
   });
+
+  it('should stream messages via SDK', async () => {
+    const mockStream = {
+      stream: [
+        { text: () => 'Chunk 1' },
+        { text: () => 'Chunk 2' }
+      ]
+    };
+    const mockGenerateContentStream = vi.fn().mockResolvedValue(mockStream);
+    mockGetGenerativeModel.mockReturnValue({
+      generateContentStream: mockGenerateContentStream
+    });
+
+    const chunks: string[] = [];
+    await adapter.streamMessage('Stream test', (chunk) => {
+      if (chunk.text) chunks.push(chunk.text);
+    });
+
+    expect(chunks).toEqual(['Chunk 1', 'Chunk 2']);
+    expect(mockGenerateContentStream).toHaveBeenCalledWith('Stream test');
+  });
 });
