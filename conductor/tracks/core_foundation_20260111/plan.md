@@ -4,7 +4,7 @@
 - [x] Task: Initialize Turborepo Structure 808bc89
     - [ ] Subtask: Write Tests (Check directory structure and build scripts)
     - [ ] Subtask: Implement Feature (Run `pnpm init` and configure workspaces)
-- [ ] Task: Configure Shared Tooling
+- [x] Task: Configure Shared Tooling 311a077
     - [ ] Subtask: Write Tests (Verify linting and format rules)
     - [ ] Subtask: Implement Feature (Setup ESLint, Prettier, TypeScript config)
 - [ ] Task: Conductor - User Manual Verification 'Monorepo & Infrastructure Setup' (Protocol in workflow.md)
