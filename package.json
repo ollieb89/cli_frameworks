@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
+    "build": "turbo build",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
