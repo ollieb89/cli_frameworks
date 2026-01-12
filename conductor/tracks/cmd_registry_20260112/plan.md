@@ -1,20 +1,17 @@
 # Execution Plan: Command Namespace Registry & Global Commands
 
-## Phase 1: Registry Foundation & Discovery
+## Phase 1: Registry Foundation & Discovery [checkpoint: 8915862]
 
 - [x] Task: Define Command Interfaces 9840112
   - [x] Subtask: Write Tests (Define `CommandDefinition` and `Registry` types)
   - [x] Subtask: Implement Feature (Create `packages/cli/src/registry/types.ts`)
-  - [ ] Subtask: Implement Feature (Create `packages/cli/src/registry/types.ts`)
 - [x] Task: Implement Dynamic Discovery Logic 4845fed
   - [x] Subtask: Write Tests (Mock file system to verify glob-based loading)
   - [x] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
-  - [ ] Subtask: Implement Feature (Use `glob` and dynamic imports to scan `src/commands`)
 - [x] Task: Create `CommandRegistry` Singleton fe84ed5
   - [x] Subtask: Write Tests (Register, retrieve, and list commands)
   - [x] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
-  - [ ] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
-- [~] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' 8915862
 
 ## Phase 2: Global Commands Implementation
 
