@@ -29,8 +29,9 @@
   - [x] Subtask: Write Tests (Verify table rendering logic)
   - [x] Subtask: Implement Feature (Use `cli-table3` or `ink-table` for the static view)
   - [ ] Subtask: Implement Feature (Use `cli-table3` or `ink-table` for the static view)
-- [~] Task: Implement `/help` Interactive Search
-  - [ ] Subtask: Write Tests (Verify filtering logic in Ink component)
+- [x] Task: Implement `/help` Interactive Search 2db72f5
+  - [x] Subtask: Write Tests (Verify filtering logic in Ink component)
+  - [x] Subtask: Implement Feature (Create `HelpSearch` Ink component in `packages/cli/src/ui/HelpSearch.tsx`)
   - [ ] Subtask: Implement Feature (Create `HelpSearch` Ink component in `packages/cli/src/ui/HelpSearch.tsx`)
 - [ ] Task: Integrate Registry with REPL
   - [ ] Subtask: Write Tests (Verify `/help` triggers registry lookup)
