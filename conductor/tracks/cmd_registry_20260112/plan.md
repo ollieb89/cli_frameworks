@@ -14,7 +14,7 @@
   - [x] Subtask: Write Tests (Register, retrieve, and list commands)
   - [x] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
   - [ ] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
-- [ ] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' (Protocol in workflow.md)
 
 ## Phase 2: Global Commands Implementation
 
