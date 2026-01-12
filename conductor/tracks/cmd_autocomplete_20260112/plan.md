@@ -8,7 +8,7 @@
     - [ ] Implement `fuzzyMatch(input: string, candidate: string): boolean`
     - [ ] Implement scoring/sorting logic (optional but recommended for better UX)
     - [ ] Unit Test: `packages/cli/src/utils/fuzzy.test.ts`
-- [ ] Task: Update `CommandRegistry` to expose simplified list for UI
+- [x] [48c53b2] Task: Update `CommandRegistry` to expose simplified list for UI
     - [ ] Ensure `CommandRegistry.list()` returns necessary metadata (name, namespace, description, args definition).
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Utilities' (Protocol in workflow.md)
 
