@@ -27,7 +27,7 @@
 
 ## Phase 3: CLI Shell & Command System
 
-- [ ] Task: Setup Ink REPL
+- [~] Task: Setup Ink REPL
   - [ ] Subtask: Write Tests (Render basic ink component)
   - [ ] Subtask: Implement Feature (Create entry point and main REPL loop in `packages/cli`)
 - [ ] Task: Implement Command Parser
