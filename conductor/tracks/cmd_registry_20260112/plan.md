@@ -25,7 +25,7 @@
 
 ## Phase 3: Help System & Interactive UI
 
-- [ ] Task: Implement `/help` Rich Table
+- [~] Task: Implement `/help` Rich Table
   - [ ] Subtask: Write Tests (Verify table rendering logic)
   - [ ] Subtask: Implement Feature (Use `cli-table3` or `ink-table` for the static view)
 - [ ] Task: Implement `/help` Interactive Search
