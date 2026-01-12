@@ -37,4 +37,4 @@
   - [x] Subtask: Write Tests (Verify `/help` triggers registry lookup)
   - [x] Subtask: Implement Feature (Update `App.tsx` to use the dynamic registry instead of hardcoded checks)
   - [ ] Subtask: Implement Feature (Update `App.tsx` to use the dynamic registry instead of hardcoded checks)
-- [ ] Task: Conductor - User Manual Verification 'Help System & Interactive UI' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Help System & Interactive UI' (Protocol in workflow.md)
