@@ -13,17 +13,15 @@
   - [x] Subtask: Implement Feature (Core registry logic in `packages/cli/src/registry/CommandRegistry.ts`)
 - [x] Task: Conductor - User Manual Verification 'Registry Foundation & Discovery' 8915862
 
-## Phase 2: Global Commands Implementation
+## Phase 2: Global Commands Implementation [checkpoint: 60a8379]
 
 - [x] Task: Implement `/version` Command e7d052f
   - [x] Subtask: Write Tests (Verify output contains shared version info)
   - [x] Subtask: Implement Feature (Standard command export in `src/commands/global/version.ts`)
-  - [ ] Subtask: Implement Feature (Standard command export in `src/commands/global/version.ts`)
 - [x] Task: Implement `/config` Command (Basic) 0050d65
   - [x] Subtask: Write Tests (Verify get/set logic)
   - [x] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
-  - [ ] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
-- [~] Task: Conductor - User Manual Verification 'Global Commands Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Global Commands Implementation' 60a8379
 
 ## Phase 3: Help System & Interactive UI
 
