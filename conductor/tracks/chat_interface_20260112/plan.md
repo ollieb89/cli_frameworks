@@ -1,20 +1,20 @@
 # Plan: Chat Interface & AI Streaming
 
 ## Phase 1: AI Client & Streaming logic
-- [ ] **Task: Streaming Support in FAL**
-    - [ ] Subtask: Add `streamMessage` to `ProviderAdapter` interface.
-    - [ ] Subtask: Implement streaming in `GeminiAdapter`.
-- [ ] **Task: Provider Initialization**
-    - [ ] Subtask: Create a utility to auto-initialize the correct adapter based on `auth:status`.
+- [x] **Task: Streaming Support in FAL**
+    - [x] Subtask: Add `streamMessage` to `ProviderAdapter` interface.
+    - [x] Subtask: Implement streaming in `GeminiAdapter`.
+- [x] **Task: Provider Initialization**
+    - [x] Subtask: Create a utility to auto-initialize the correct adapter based on `auth:status`.
 
 ## Phase 2: Chat TUI Implementation
-- [ ] **Task: Create `ChatView` Component**
-    - [ ] Subtask: Design a reactive layout for messages.
-    - [ ] Subtask: Handle streaming state updates in the UI.
-- [ ] **Task: Input & Scrolling**
-    - [ ] Subtask: Integrate `TextInput` for multi-line (or single-line) chat.
+- [x] **Task: Create `ChatView` Component**
+    - [x] Subtask: Design a reactive layout for messages.
+    - [x] Subtask: Handle streaming state updates in the UI.
+- [x] **Task: Input & Scrolling**
+    - [x] Subtask: Integrate `TextInput` for multi-line (or single-line) chat.
 
 ## Phase 3: Integration & Global Command
-- [ ] **Task: `/chat` Command**
-    - [ ] Subtask: Implement the command to switch the App mode to `chat`.
-    - [ ] Subtask: Wire up the message history state.
+- [x] **Task: `/chat` Command**
+    - [x] Subtask: Implement the command to switch the App mode to `chat`.
+    - [x] Subtask: Wire up the message history state.
