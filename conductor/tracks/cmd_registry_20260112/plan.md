@@ -23,7 +23,7 @@
   - [x] Subtask: Write Tests (Verify get/set logic)
   - [x] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
   - [ ] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
-- [ ] Task: Conductor - User Manual Verification 'Global Commands Implementation' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Global Commands Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Help System & Interactive UI
 
