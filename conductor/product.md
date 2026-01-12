@@ -8,11 +8,11 @@ This project aims to create an **optimized unified AI CLI suite** starting with 
 
 ## Key Architectural Patterns
 
--   **CLI Interface Layer:** REPL, Commands, Interactive Modes, IDE Integration
--   **Command/Agent Orchestration:** Command Namespace Registry, Agent Router, Skill Dispatcher, Workflow Executor
--   **Framework Abstraction Layer (FAL):** Adapters for Gemini, Claude, OpenAI, etc.
--   **Core Services Layer:** MCP Integration, Tool Manager, Provider Client, Policy Engine, Memory System, Configuration Manager
--   **LLM Provider APIs:** Gemini, Claude, OpenAI
+- **CLI Interface Layer:** REPL, Commands, Interactive Modes, IDE Integration
+- **Command/Agent Orchestration:** Command Namespace Registry, Agent Router, Skill Dispatcher, Workflow Executor
+- **Framework Abstraction Layer (FAL):** Adapters for Gemini, Claude, OpenAI, etc.
+- **Core Services Layer:** MCP Integration, Tool Manager, Provider Client, Policy Engine, Memory System, Configuration Manager
+- **LLM Provider APIs:** Gemini, Claude, OpenAI
 
 ## Multi-Framework Roadmap
 
@@ -21,24 +21,29 @@ This project aims to create an **optimized unified AI CLI suite** starting with 
 3.  **OpenAI Codex CLI (Phase 5):** OpenAI adapter, GPT-4/4-Turbo integration, Function calling support.
 
 # Product Vision
+
 A unified, modular, and extensible AI CLI suite that empowers developers and "vibe-coding" enthusiasts to leverage multiple AI frameworks through a single, intelligent, and highly interactive interface.
 
 # Target Users
+
 - **Developers and Software Engineers:** Professionals seeking a powerful, command-driven AI assistant for deep technical tasks like refactoring, debugging, and architecture design.
 - **Vibe-coding Enthusiasts:** Creative developers who prioritize a high-velocity, expressive, and conversational flow in their coding sessions.
 
 # Core Goals
+
 - **Unified Interface:** Provide a consistent CLI experience regardless of the underlying LLM provider (Gemini, Claude, or OpenAI).
 - **Modular Extensibility:** Enable rapid expansion of capabilities through custom commands, specialized agents, and portable skills.
 - **Intelligent Orchestration:** Facilitate complex task management and automated development workflows.
 - **Advanced Context & Memory:** Leverage semantic memory and sophisticated context management for long-running project awareness.
 
 # Key Features (Initial Release)
+
 - **Namespace Command System:** An organized command hierarchy (e.g., `/dev`, `/test`, `/security`, `/project`) for intuitive navigation and execution.
 - **Task Orchestration Engine:** A robust system for decomposing objectives into actionable tasks, integrated directly with Git for history and state management.
 - **Specialized AI Agents:** Autonomous agents with focused tool access, such as a Code Quality Suite and a Test Engineer.
 
 # Guiding Principles
+
 - **Framework Agnosticism:** Core logic remains independent of specific LLM providers, ensuring future-proofing and provider flexibility.
 - **Performance Optimized:** Built for high-performance interactions, minimizing latency in both local operations and API communication.
 - **Rich & Interactive UX:** Utilizing TUI (Terminal User Interface) components for a modern, visual, and highly interactive developer experience.
