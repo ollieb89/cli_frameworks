@@ -31,7 +31,7 @@
   - [x] Subtask: Write Tests (Render basic ink component)
   - [x] Subtask: Implement Feature (Create entry point and main REPL loop in `packages/cli`)
   - [ ] Subtask: Implement Feature (Create entry point and main REPL loop in `packages/cli`)
-- [ ] Task: Implement Command Parser
+- [~] Task: Implement Command Parser
   - [ ] Subtask: Write Tests (Parse `/namespace:command` strings)
   - [ ] Subtask: Implement Feature (Logic to extract namespace, command, and args)
 - [ ] Task: Create /dev:status Command
