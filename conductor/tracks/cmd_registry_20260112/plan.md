@@ -19,7 +19,7 @@
   - [x] Subtask: Write Tests (Verify output contains shared version info)
   - [x] Subtask: Implement Feature (Standard command export in `src/commands/global/version.ts`)
   - [ ] Subtask: Implement Feature (Standard command export in `src/commands/global/version.ts`)
-- [ ] Task: Implement `/config` Command (Basic)
+- [~] Task: Implement `/config` Command (Basic)
   - [ ] Subtask: Write Tests (Verify get/set logic)
   - [ ] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
 - [ ] Task: Conductor - User Manual Verification 'Global Commands Implementation' (Protocol in workflow.md)
