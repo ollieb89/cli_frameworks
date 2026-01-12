@@ -1,0 +1,26 @@
+{
+  "name": "@gemini-cli/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "test": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gemini-cli/core": "workspace:*",
+    "@gemini-cli/shared": "workspace:*",
+    "commander": "^12.0.0",
+    "ink": "^4.4.1",
+    "lucide-react": "^0.471.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "ink-testing-library": "^3.0.0"
+  }
+}
