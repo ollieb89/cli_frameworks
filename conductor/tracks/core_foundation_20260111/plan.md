@@ -15,7 +15,7 @@
 - [x] Task: Define Provider Interfaces f242da5
   - [x] Subtask: Write Tests (Mock implementation of ProviderAdapter)
   - [x] Subtask: Implement Feature (Create `ProviderAdapter` and `ProviderCapabilities` interfaces in `packages/core`)
-- [ ] Task: Implement Gemini Adapter
+- [~] Task: Implement Gemini Adapter
   - [ ] Subtask: Write Tests (Mock API calls to Gemini)
   - [ ] Subtask: Implement Feature (Create `GeminiAdapter` using `@google/generative-ai`)
 - [ ] Task: Implement Provider Registry
