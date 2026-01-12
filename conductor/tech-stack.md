@@ -1,4 +1,13 @@
-# Core Technologies
+## Core Infrastructure
+- **Monorepo:** Turborepo
+- **Package Manager:** pnpm
+- **Language:** TypeScript (NodeNext)
+
+## Frameworks & Libraries
+- **Terminal UI:** Ink (React-based)
+- **Command Parsing:** Custom namespace parser + Commander.js
+- **AI Integration:** Google Generative AI (@google/generative-ai)
+- **Testing:** Vitest
 
 ## Programming Language & Runtime
 

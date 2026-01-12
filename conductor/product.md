@@ -22,7 +22,7 @@ This project aims to create an **optimized unified AI CLI suite** starting with 
 
 # Product Vision
 
-A unified, modular, and extensible AI CLI suite that empowers developers and "vibe-coding" enthusiasts to leverage multiple AI frameworks through a single, intelligent, and highly interactive interface.
+A modern, extensible CLI suite for AI-powered development, featuring a Framework Abstraction Layer (FAL) with built-in Gemini support and a reactive terminal interface.
 
 # Target Users
 
