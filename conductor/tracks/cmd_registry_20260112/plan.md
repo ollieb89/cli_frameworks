@@ -23,18 +23,15 @@
   - [x] Subtask: Implement Feature (Store config in `packages/cli/src/config/ConfigManager.ts` and expose via command)
 - [x] Task: Conductor - User Manual Verification 'Global Commands Implementation' 60a8379
 
-## Phase 3: Help System & Interactive UI
+## Phase 3: Help System & Interactive UI [checkpoint: 72d03b4]
 
 - [x] Task: Implement `/help` Rich Table e328544
   - [x] Subtask: Write Tests (Verify table rendering logic)
   - [x] Subtask: Implement Feature (Use `cli-table3` or `ink-table` for the static view)
-  - [ ] Subtask: Implement Feature (Use `cli-table3` or `ink-table` for the static view)
 - [x] Task: Implement `/help` Interactive Search 2db72f5
   - [x] Subtask: Write Tests (Verify filtering logic in Ink component)
   - [x] Subtask: Implement Feature (Create `HelpSearch` Ink component in `packages/cli/src/ui/HelpSearch.tsx`)
-  - [ ] Subtask: Implement Feature (Create `HelpSearch` Ink component in `packages/cli/src/ui/HelpSearch.tsx`)
 - [x] Task: Integrate Registry with REPL d81990b
   - [x] Subtask: Write Tests (Verify `/help` triggers registry lookup)
   - [x] Subtask: Implement Feature (Update `App.tsx` to use the dynamic registry instead of hardcoded checks)
-  - [ ] Subtask: Implement Feature (Update `App.tsx` to use the dynamic registry instead of hardcoded checks)
-- [~] Task: Conductor - User Manual Verification 'Help System & Interactive UI' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Help System & Interactive UI' 72d03b4
