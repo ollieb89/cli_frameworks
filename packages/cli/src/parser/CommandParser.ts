@@ -7,6 +7,7 @@ export interface ParsedCommand {
 
 /**
  * Parses a command string in the format /namespace:command [args...]
+ * Also supports /command [args...] which implies the 'global' namespace.
  */
 export function parseCommand(input: string): ParsedCommand | null {
   const trimmed = input.trim();
@@ -15,18 +16,33 @@ export function parseCommand(input: string): ParsedCommand | null {
   }
 
   // Regex to match /namespace:command
-  const match = trimmed.match(/^\/([a-zA-Z0-9]+):([a-zA-Z0-9]+)(?:\s+(.*))?$/);
-  if (!match) {
-    return null;
+  const nsMatch = trimmed.match(/^\/([a-zA-Z0-9]+):([a-zA-Z0-9]+)(?:\s+(.*))?$/);
+  if (nsMatch) {
+    const [, namespace, command, rest] = nsMatch;
+    const args = rest ? rest.split(/\s+/).filter(Boolean) : [];
+    return {
+      namespace,
+      command,
+      args,
+      raw: trimmed
+    };
   }
 
-  const [, namespace, command, rest] = match;
-  const args = rest ? rest.split(/\s+/).filter(Boolean) : [];
+  // Regex to match /command (implicit global)
+  const globalMatch = trimmed.match(/^\/([a-zA-Z0-9]+)(?:\s+(.*))?$/);
+  if (globalMatch) {
+    const [, command, rest] = globalMatch;
+    // Ensure it's not just a slash followed by space
+    if (!command) return null;
+    
+    const args = rest ? rest.split(/\s+/).filter(Boolean) : [];
+    return {
+      namespace: 'global',
+      command,
+      args,
+      raw: trimmed
+    };
+  }
 
-  return {
-    namespace,
-    command,
-    args,
-    raw: trimmed
-  };
+  return null;
 }
