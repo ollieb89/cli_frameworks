@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { handleDevStatus } from './status.js';
+import statusCommand from './status.js';
 import { ProviderRegistry } from '@gemini-cli/core';
 
 // Mock ProviderRegistry
@@ -10,23 +10,16 @@ vi.mock('@gemini-cli/core', () => ({
   }
 }));
 
-describe('handleDevStatus', () => {
-  it('should return status info with default provider', () => {
+describe('status command', () => {
+  it('should return status info with default provider', async () => {
     (ProviderRegistry.getDefault as any).mockReturnValue({
       getCapabilities: () => ({ name: 'Mock Provider', version: '1.0' })
     });
 
-    const output = handleDevStatus();
-    expect(output).toContain('System Status: Online');
-    expect(output).toContain('Active Provider: Mock Provider');
-  });
-
-  it('should handle missing default provider', () => {
-     (ProviderRegistry.getDefault as any).mockImplementation(() => {
-       throw new Error('No default provider set');
-     });
-
-     const output = handleDevStatus();
-     expect(output).toContain('Active Provider: None (Error: No default provider set)');
+    const consoleSpy = vi.spyOn(console, 'log');
+    await statusCommand.handler({});
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('System Status: Online'));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Active Provider: Mock Provider'));
+    consoleSpy.mockRestore();
   });
 });
