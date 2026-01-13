@@ -1,5 +1,5 @@
 {
-  "name": "@gemini-cli/cli",
+  "name": "@omnicode/cli",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,9 +13,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@gemini-cli/core": "workspace:*",
-    "@gemini-cli/mcp": "workspace:*",
-    "@gemini-cli/shared": "workspace:*",
+    "@omnicode/core": "workspace:*",
+    "@omnicode/mcp": "workspace:*",
+    "@omnicode/shared": "workspace:*",
     "cli-table3": "^0.6.5",
     "commander": "^12.0.0",
     "fast-glob": "^3.3.3",
