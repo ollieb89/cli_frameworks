@@ -19,7 +19,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 ## Phase 2: Configuration & Discovery
 **Goal:** Allow users to configure MCP servers via standard config files.
 - [x] **Task 1:** Define `McpConfig` schema (`servers`, `globalPolicy`). [1eede4b]
-- [ ] **Task 2:** Update `ConfigManager` (in `packages/cli`) to load `mcp.json` hierarchically:
+- [x] **Task 2:** Update `ConfigManager` (in `packages/cli`) to load `mcp.json` hierarchically: [44e1fbe]
     -   Global: `~/.gemini-cli/mcp.json`
     -   Project: `./.gemini/mcp.json`
 - [ ] **Task 3:** Integrate `McpManager` with `ConfigManager` to auto-load servers on startup.
