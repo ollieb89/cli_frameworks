@@ -32,7 +32,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 - [x] **Task 4:** Implement `/mcp:inspect <server>` (JSON dump of tools/resources/prompts). [c96f90b]
 - [x] **Task 5:** Implement `/mcp:add` (Interactive Ink wizard to append to config). [56f60ab]
 
-## Phase 4: Integration & Security UX
+## Phase 4: Integration & Security UX [checkpoint: 0bb3d6e]
 **Goal:** Connect the tools to the Agent and provide a secure UI.
 - [x] **Task 1:** Create `McpToolAdapter` to bridge `McpManager` tools to the existing `CommandRegistry` or `Agent` tool list. [18f44c2]
 - [x] **Task 2:** Implement Ink `ToolApproval` component. [493008a]
