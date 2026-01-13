@@ -4,12 +4,13 @@ import { ProviderAdapter, ProviderCapabilities, StreamCallback } from './Provide
 export interface GeminiConfig {
     apiKey?: string;
     accessToken?: string;
+    modelName?: string;
 }
 
 export class GeminiAdapter implements ProviderAdapter {
   private genAI?: GoogleGenerativeAI;
   private accessToken?: string;
-  private modelName = 'gemini-1.5-flash';
+  private modelName = 'gemini-3.0-flash';
 
   constructor(config: GeminiConfig | string) {
     if (typeof config === 'string') {
@@ -19,6 +20,9 @@ export class GeminiAdapter implements ProviderAdapter {
             this.genAI = new GoogleGenerativeAI(config.apiKey);
         } else if (config.accessToken) {
             this.accessToken = config.accessToken;
+        }
+        if (config.modelName) {
+            this.modelName = config.modelName;
         }
     }
   }
@@ -33,7 +37,7 @@ export class GeminiAdapter implements ProviderAdapter {
   }
 
   async listModels(): Promise<string[]> {
-    return ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
+    return ['gemini-3.0-flash', 'gemini-3.0-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'];
   }
 
   async sendMessage(message: string): Promise<string> {

@@ -6,13 +6,14 @@ export class ProviderFactory {
     // Check Google Auth
     const googleAccessToken = ConfigManager.getSecret('google.accessToken');
     const googleApiKey = ConfigManager.getSecret('google.apiKey');
+    const googleModel = ConfigManager.get('google.model') as string | undefined;
 
     if (googleAccessToken) {
-        return new GeminiAdapter({ accessToken: googleAccessToken });
+        return new GeminiAdapter({ accessToken: googleAccessToken, modelName: googleModel });
     }
     
     if (googleApiKey) {
-        return new GeminiAdapter({ apiKey: googleApiKey });
+        return new GeminiAdapter({ apiKey: googleApiKey, modelName: googleModel });
     }
 
     // OpenAI

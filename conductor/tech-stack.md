@@ -1,9 +1,11 @@
 ## Core Infrastructure
+
 - **Monorepo:** Turborepo
 - **Package Manager:** pnpm
 - **Language:** TypeScript (NodeNext)
 
 ## Frameworks & Libraries
+
 - **Terminal UI:** Ink (React-based)
 - **Command Parsing:** Custom namespace parser + Commander.js
 - **Command Discovery:** fast-glob
@@ -22,8 +24,8 @@
 
 ## AI Foundation
 
-- **Gemini API (@google/generative-ai):** The primary AI engine for the initial phases.
-- **Claude API (@anthropic-ai/sdk):** Integrated for forward compatibility and specialized reasoning tasks.
+- **Gemini API (@google/generative-ai):** The primary AI engine. Standard: **Gemini 3.0 Flash** for speed, **Gemini 3.0 Pro** for complex reasoning.
+- **Claude API (@anthropic-ai/sdk):** Integrated for forward compatibility. Standard: **Claude 3.5 Sonnet/Opus**.
 - **OpenAI API (openai):** Integrated for multi-provider support and function-calling capabilities.
 - **OAuth & Browser-Based Login:** Support for secure, browser-based authentication flows for each provider.
 
