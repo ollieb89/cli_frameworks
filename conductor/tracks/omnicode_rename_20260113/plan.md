@@ -6,12 +6,12 @@
 - [x] Task: Update all internal import statements across the monorepo to use the new `@omnicode/` scope. abd0c2a
 - [x] Task: Conductor - User Manual Verification 'Monorepo & Package Identity Renaming' (Protocol in workflow.md) 7d19f5e
 
-## Phase 2: Configuration & Environment Infrastructure
-- [ ] Task: Write failing test for configuration path resolution (verifying `~/.omnicode` vs `~/.gemini`).
-- [ ] Task: Update `ConfigManager` and path utility constants to use `.omnicode` as the root directory.
-- [ ] Task: Write failing test for environment variable loading (verifying `OMNICODE_` prefix requirement).
-- [ ] Task: Update environment variable parsing logic to use `OMNICODE_` prefix and remove `GEMINI_CLI_` support.
-- [ ] Task: Conductor - User Manual Verification 'Configuration & Environment Infrastructure' (Protocol in workflow.md)
+## Phase 2: Configuration & Environment Infrastructure [checkpoint: 916712a]
+- [x] Task: Write failing test for configuration path resolution (verifying `~/.omnicode` vs `~/.gemini`). 9000162
+- [x] Task: Update `ConfigManager` and path utility constants to use `.omnicode` as the root directory. a687ea3
+- [x] Task: Write failing test for environment variable loading (verifying `OMNICODE_` prefix requirement). ad2bcae
+- [x] Task: Update environment variable parsing logic to use `OMNICODE_` prefix and remove `GEMINI_CLI_` support. f68a8cf
+- [x] Task: Conductor - User Manual Verification 'Configuration & Environment Infrastructure' (Protocol in workflow.md) 916712a
 
 ## Phase 3: CLI Entry Points & Binary Configuration
 - [ ] Task: Update `bin` field in `packages/cli/package.json` to map `oc` and `omnicode` to the entry point.
