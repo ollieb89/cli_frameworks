@@ -10,5 +10,5 @@
 - Monorepo using Turborepo.
 - Code resides in `packages/<package-name>/src`.
 - Output goes to `dist/`.
-- Scoped packages `@gemini-cli/*`.
+- Scoped packages `@omnicode/*`.
 **Versioning:** `pnpm` workspace protocol `workspace:*`.
