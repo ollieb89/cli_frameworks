@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
     "build": "tsc",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
