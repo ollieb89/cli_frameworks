@@ -38,7 +38,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 - [x] **Task 2:** Implement Ink `ToolApproval` component. [493008a]
     -   Show tool name, server, params.
     -   Options: "Allow Once", "Always Allow", "Deny".
-- [ ] **Task 3:** Wire `PolicyGate` into the tool execution flow (pre-execution hook).
+- [x] **Task 3:** Wire `PolicyGate` into the tool execution flow (pre-execution hook). [42c95f0]
 
 ## Phase 5: Verification
 - [ ] **Task 1:** Verify connection to a standard MCP server (e.g., `sqlite` or `filesystem`).
