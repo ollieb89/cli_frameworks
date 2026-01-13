@@ -42,5 +42,5 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 
 ## Phase 5: Verification
 - [x] **Task 1:** Verify connection to a standard MCP server (e.g., `sqlite` or `filesystem`). [c13c47e]
-- [ ] **Task 2:** Verify tool execution and output handling.
+- [x] **Task 2:** Verify tool execution and output handling. [bc84e3d]
 - [ ] **Task 3:** Verify security gates and configuration loading.
