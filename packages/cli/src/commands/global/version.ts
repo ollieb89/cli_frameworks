@@ -5,8 +5,8 @@ const versionCommand: CommandDefinition = {
   namespace: 'global',
   name: 'version',
   description: 'Displays the current version of the CLI suite',
-  handler: async () => {
-    console.log(`${APP_NAME} v${VERSION}`);
+  handler: async (args, context) => {
+    context.log(`${APP_NAME} v${VERSION}`);
   }
 };
 

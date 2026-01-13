@@ -11,8 +11,8 @@ describe('Command Interfaces', () => {
       args: [
         { name: 'arg1', description: 'Argument 1', required: true }
       ],
-      handler: async (args) => {
-        console.log(args);
+      handler: async (args, context) => {
+        context.log(String(args));
       }
     };
 

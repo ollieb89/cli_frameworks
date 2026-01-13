@@ -5,7 +5,7 @@ const command: CommandDefinition = {
   namespace: 'auth',
   name: 'status',
   description: 'Check authentication status for providers',
-  handler: async () => {
+  handler: async (args, context) => {
     const status: Record<string, string> = {};
 
     // Google Check
@@ -32,9 +32,9 @@ const command: CommandDefinition = {
     status['anthropic'] = anthropicKey ? 'Configured (Key present)' : 'Not Configured';
 
     // Display
-    console.log('Authentication Status:');
+    context.log('Authentication Status:');
     for (const [p, s] of Object.entries(status)) {
-        console.log(`- ${p.padEnd(10)}: ${s}`);
+        context.log(`- ${p.padEnd(10)}: ${s}`);
     }
   }
 };

@@ -9,10 +9,10 @@ describe('Version Command', () => {
   });
 
   it('should print version info', async () => {
-    const consoleSpy = vi.spyOn(console, 'log');
-    await versionCommand.handler({});
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(APP_NAME));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(VERSION));
-    consoleSpy.mockRestore();
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await versionCommand.handler({}, context);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(APP_NAME));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(VERSION));
   });
 });

@@ -6,7 +6,7 @@ const statusCommand: CommandDefinition = {
   namespace: 'dev',
   name: 'status',
   description: 'Displays the current system status and provider info',
-  handler: async () => {
+  handler: async (args, context) => {
     let providerInfo = 'None';
     try {
       const provider = ProviderRegistry.getDefault();
@@ -16,7 +16,7 @@ const statusCommand: CommandDefinition = {
       providerInfo = `None (Error: ${err.message})`;
     }
 
-    console.log(`
+    context.log(`
 --- ${APP_NAME} v${VERSION} ---
 System Status: Online
 Active Provider: ${providerInfo}

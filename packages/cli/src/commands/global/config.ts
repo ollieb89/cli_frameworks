@@ -10,31 +10,31 @@ const configCommand: CommandDefinition = {
     { name: 'key', description: 'Configuration key', required: false },
     { name: 'value', description: 'Configuration value', required: false }
   ],
-  handler: async (args) => {
+  handler: async (args, context) => {
     const subArgs = args._ || [];
     const action = subArgs[0];
 
     if (action === 'list') {
-      console.log('Current Configuration:');
-      console.log(JSON.stringify(ConfigManager.list(), null, 2));
+      context.log('Current Configuration:');
+      context.log(JSON.stringify(ConfigManager.list(), null, 2));
     } else if (action === 'set') {
       const key = subArgs[1];
       const value = subArgs[2];
       if (key && value) {
         ConfigManager.set(key, value);
-        console.log(`Set ${key}=${value}`);
+        context.log(`Set ${key}=${value}`);
       } else {
-        console.error('Usage: /config set <key> <value>');
+        context.error('Usage: /config set <key> <value>');
       }
     } else if (action === 'get') {
       const key = subArgs[1];
       if (key) {
-        console.log(ConfigManager.get(key));
+        context.log(String(ConfigManager.get(key)));
       } else {
-        console.error('Usage: /config get <key>');
+        context.error('Usage: /config get <key>');
       }
     } else {
-      console.error('Unknown action. Use list, get, or set.');
+      context.error('Unknown action. Use list, get, or set.');
     }
   }
 };

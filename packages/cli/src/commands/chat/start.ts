@@ -5,7 +5,7 @@ const command: CommandDefinition = {
   name: 'start',
   description: 'Start an interactive chat session with the default AI provider',
   aliases: ['chat'],
-  handler: async () => {
+  handler: async (args, context) => {
     // This command is handled specially in App.tsx
     // because it requires switching the Ink UI mode.
   }

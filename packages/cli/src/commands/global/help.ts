@@ -7,7 +7,7 @@ const helpCommand: CommandDefinition = {
   name: 'help',
   description: 'Displays a list of available commands',
   aliases: ['h', '?'],
-  handler: async (args) => {
+  handler: async (args, context) => {
     // TODO: Implement interactive search when -i flag is passed
     
     const commands = CommandRegistry.list();
@@ -21,7 +21,7 @@ const helpCommand: CommandDefinition = {
       table.push([cmd.namespace, cmd.name, cmd.description]);
     }
 
-    console.log(table.toString());
+    context.log(table.toString());
   }
 };
 

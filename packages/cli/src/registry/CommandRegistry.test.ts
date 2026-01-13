@@ -7,7 +7,7 @@ describe('CommandRegistry', () => {
     namespace: 'test',
     name: 'run',
     description: 'Run test',
-    handler: async () => {}
+    handler: async (args, context) => {}
   };
 
   beforeEach(() => {

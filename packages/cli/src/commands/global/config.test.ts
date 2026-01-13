@@ -9,23 +9,25 @@ describe('Config Command', () => {
 
   it('should list config', async () => {
     ConfigManager.set('foo', 'bar');
-    const consoleSpy = vi.spyOn(console, 'log');
-    await configCommand.handler({ _: ['list'] });
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('foo'));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('bar'));
-    consoleSpy.mockRestore();
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await configCommand.handler({ _: ['list'] }, context);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('foo'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('bar'));
   });
 
   it('should set config', async () => {
-    await configCommand.handler({ _: ['set', 'color', 'blue'] });
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await configCommand.handler({ _: ['set', 'color', 'blue'] }, context);
     expect(ConfigManager.get('color')).toBe('blue');
   });
 
   it('should get config', async () => {
     ConfigManager.set('user', 'alice');
-    const consoleSpy = vi.spyOn(console, 'log');
-    await configCommand.handler({ _: ['get', 'user'] });
-    expect(consoleSpy).toHaveBeenCalledWith('alice');
-    consoleSpy.mockRestore();
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await configCommand.handler({ _: ['get', 'user'] }, context);
+    expect(logSpy).toHaveBeenCalledWith('alice');
   });
 });

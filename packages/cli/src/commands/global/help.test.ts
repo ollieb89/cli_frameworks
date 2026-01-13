@@ -9,20 +9,19 @@ describe('Help Command (Table)', () => {
       namespace: 'test',
       name: 'cmd',
       description: 'Test command',
-      handler: async () => {}
+      handler: async (args, context) => {}
     });
   });
 
   it('should render a table with registered commands', async () => {
-    const consoleSpy = vi.spyOn(console, 'log');
-    await helpCommand.handler({});
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await helpCommand.handler({}, context);
     
     // Check if output contains headers and data
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Namespace'));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Command'));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('test'));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('cmd'));
-    
-    consoleSpy.mockRestore();
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Namespace'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Command'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('test'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('cmd'));
   });
 });

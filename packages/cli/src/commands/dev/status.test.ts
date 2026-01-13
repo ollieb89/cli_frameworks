@@ -16,10 +16,10 @@ describe('status command', () => {
       getCapabilities: () => ({ name: 'Mock Provider', version: '1.0' })
     });
 
-    const consoleSpy = vi.spyOn(console, 'log');
-    await statusCommand.handler({});
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('System Status: Online'));
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Active Provider: Mock Provider'));
-    consoleSpy.mockRestore();
+    const logSpy = vi.fn();
+    const context = { log: logSpy, error: vi.fn() };
+    await statusCommand.handler({}, context);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('System Status: Online'));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('Active Provider: Mock Provider'));
   });
 });

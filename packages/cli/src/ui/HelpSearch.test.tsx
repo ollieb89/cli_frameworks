@@ -5,8 +5,8 @@ import { HelpSearch } from './HelpSearch.js';
 
 describe('HelpSearch Component', () => {
   const mockCommands = [
-    { namespace: 'test', name: 'cmd1', description: 'Command 1', handler: async () => {} },
-    { namespace: 'dev', name: 'status', description: 'Show status', handler: async () => {} }
+    { namespace: 'test', name: 'cmd1', description: 'Command 1', handler: async (args, context) => {} },
+    { namespace: 'dev', name: 'status', description: 'Show status', handler: async (args, context) => {} }
   ];
 
   it('should render all commands initially', () => {
