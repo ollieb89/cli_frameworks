@@ -9,7 +9,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 - [x] **Task 2:** Implement `McpManager` (Singleton) in `packages/mcp`. [e78b953]
     -   Support `stdio` transport.
     -   Handle connection lifecycle (connect, disconnect, health).
-- [ ] **Task 3:** Implement `ToolNormalizer`.
+- [x] **Task 3:** Implement `ToolNormalizer`. [ab193d2]
     -   Convert MCP Tool schemas to internal `Tool` interface.
     -   Enforce Zod schema validation.
 - [ ] **Task 4:** Implement `PolicyGate`.
