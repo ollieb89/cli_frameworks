@@ -18,7 +18,6 @@ describe('ConfigManager Environment Variables', () => {
     ConfigManager.resetMcp();
     // Clear process.env for tests
     delete process.env.OMNICODE_API_KEY;
-    delete process.env.GEMINI_CLI_API_KEY;
   });
 
   afterEach(() => {
@@ -26,7 +25,6 @@ describe('ConfigManager Environment Variables', () => {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
     delete process.env.OMNICODE_API_KEY;
-    delete process.env.GEMINI_CLI_API_KEY;
   });
 
   it('should not load OMNICODE_API_KEY from environment (reserved for future use)', () => {

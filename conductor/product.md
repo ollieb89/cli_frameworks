@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This project aims to create an **optimized unified AI CLI suite** starting with **Gemini CLI** as the foundation, with forward compatibility for Claude Code Framework, Copilot CLI, OpenAI Codex CLI, and other AI frameworks.
+This project aims to create an **optimized unified AI CLI suite** starting with **OmniCode** as the foundation, with forward compatibility for Claude Code Framework, Copilot CLI, OpenAI Codex CLI, and other AI frameworks.
 
 **Scope:** Analyze 15+ existing implementations of AI CLI customizations and synthesize them into a modular, extensible architecture.
 
@@ -16,7 +16,7 @@ This project aims to create an **optimized unified AI CLI suite** starting with 
 
 ## Multi-Framework Roadmap
 
-1.  **Gemini CLI Suite (Phase 1-2):** Core foundation, Full Gemini integration, Base commands, Skill system, Task orchestration.
+1.  **OmniCode Suite (Phase 1-2):** Core foundation, Full Gemini integration, Base commands, Skill system, Task orchestration.
 2.  **Claude Code Integration (Phase 3-4):** Claude adapter, Claude Code Skills compatibility, Extended thinking support, Artifact integration.
 3.  **OpenAI Codex CLI (Phase 5):** OpenAI adapter, GPT-4/4-Turbo integration, Function calling support.
 
