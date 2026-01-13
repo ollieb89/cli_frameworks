@@ -1,0 +1,9 @@
+{
+  "id": "mcp_core_integration_20260113",
+  "name": "MCP Core Integration (Host)",
+  "description": "Implement the Model Context Protocol (Host/Client) to enable external tool usage.",
+  "status": "IN_PROGRESS",
+  "created_at": "2026-01-13T00:00:00Z",
+  "phases": 5,
+  "priority": "HIGH"
+}
