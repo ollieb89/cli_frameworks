@@ -28,7 +28,7 @@ describe('GeminiAdapter', () => {
 
   it('should list models', async () => {
     const models = await adapter.listModels();
-    expect(models).toContain('gemini-1.5-flash');
+    expect(models).toContain('gemini-3.0-flash');
     expect(models.length).toBeGreaterThan(0);
   });
 
@@ -39,7 +39,7 @@ describe('GeminiAdapter', () => {
     
     const response = await adapter.sendMessage('Hello');
     
-    expect(mockGetGenerativeModel).toHaveBeenCalledWith({ model: 'gemini-1.5-flash' });
+    expect(mockGetGenerativeModel).toHaveBeenCalledWith({ model: 'gemini-3.0-flash' });
     expect(mockGenerateContent).toHaveBeenCalledWith('Hello');
     expect(response).toBe('Gemini Response');
   });
