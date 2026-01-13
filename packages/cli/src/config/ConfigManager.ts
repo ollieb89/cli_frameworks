@@ -40,6 +40,22 @@ export class ConfigManager {
     return this.mcpConfig;
   }
 
+  static saveMcpConfig(config: any) {
+    try {
+      this.mcpConfig = config;
+      const projectPath = this.getProjectMcpPath();
+      const projectDir = path.dirname(projectPath);
+      
+      if (!fs.existsSync(projectDir)) {
+        fs.mkdirSync(projectDir, { recursive: true });
+      }
+      
+      fs.writeFileSync(projectPath, JSON.stringify(config, null, 2), 'utf-8');
+    } catch (error) {
+      console.error('Failed to save MCP config:', error);
+    }
+  }
+
   static setSecret(key: string, value: string) {
     this.set(`secrets.${key}`, value);
   }
