@@ -40,7 +40,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
     -   Options: "Allow Once", "Always Allow", "Deny".
 - [x] **Task 3:** Wire `PolicyGate` into the tool execution flow (pre-execution hook). [42c95f0]
 
-## Phase 5: Verification
+## Phase 5: Verification [checkpoint: f15d0ae]
 - [x] **Task 1:** Verify connection to a standard MCP server (e.g., `sqlite` or `filesystem`). [c13c47e]
 - [x] **Task 2:** Verify tool execution and output handling. [bc84e3d]
 - [x] **Task 3:** Verify security gates and configuration loading. [cdaca52]
