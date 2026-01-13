@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
-  "bin": "./dist/index.js",
+  "bin": {
+    "omnicode": "./dist/index.js",
+    "oc": "./dist/index.js"
+  },
   "scripts": {
     "start": "node ./dist/index.js",
     "build": "tsc",
