@@ -24,7 +24,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
     -   Project: `./.gemini/mcp.json`
 - [x] **Task 3:** Integrate `McpManager` with `ConfigManager` to auto-load servers on startup. [dfeb6d3]
 
-## Phase 3: CLI Commands (/mcp Namespace)
+## Phase 3: CLI Commands (/mcp Namespace) [checkpoint: e276ccf]
 **Goal:** Provide user-facing management of the MCP subsystem.
 - [x] **Task 1:** Create `packages/cli/src/commands/mcp/` directory. [6411629]
 - [x] **Task 2:** Implement `/mcp:doctor` (Health check, SDK version, Node path). [ed92bc5]
