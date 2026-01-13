@@ -16,7 +16,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
     -   Define `Policy` interface (allowlist, confirmation rules).
     -   Implement permission check logic.
 
-## Phase 2: Configuration & Discovery
+## Phase 2: Configuration & Discovery [checkpoint: 551f191]
 **Goal:** Allow users to configure MCP servers via standard config files.
 - [x] **Task 1:** Define `McpConfig` schema (`servers`, `globalPolicy`). [1eede4b]
 - [x] **Task 2:** Update `ConfigManager` (in `packages/cli`) to load `mcp.json` hierarchically: [44e1fbe]
