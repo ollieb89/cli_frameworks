@@ -7,9 +7,10 @@ import os from 'os';
 vi.mock('os');
 
 describe('ConfigManager', () => {
-  const tempDir = path.join(os.tmpdir(), 'gemini-cli-test-' + Date.now());
+  let tempDir: string;
 
   beforeEach(() => {
+    tempDir = '/tmp/gemini-cli-test-' + Date.now();
     vi.mocked(os.homedir).mockReturnValue(tempDir);
     if (fs.existsSync(tempDir)) {
       fs.rmSync(tempDir, { recursive: true, force: true });
