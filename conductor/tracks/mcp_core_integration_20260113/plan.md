@@ -30,7 +30,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 - [x] **Task 2:** Implement `/mcp:doctor` (Health check, SDK version, Node path). [ed92bc5]
 - [x] **Task 3:** Implement `/mcp:list` (Show connected servers, status, tool count). [c7fb424]
 - [x] **Task 4:** Implement `/mcp:inspect <server>` (JSON dump of tools/resources/prompts). [c96f90b]
-- [ ] **Task 5:** Implement `/mcp:add` (Interactive Ink wizard to append to config).
+- [x] **Task 5:** Implement `/mcp:add` (Interactive Ink wizard to append to config). [56f60ab]
 
 ## Phase 4: Integration & Security UX
 **Goal:** Connect the tools to the Agent and provide a secure UI.
