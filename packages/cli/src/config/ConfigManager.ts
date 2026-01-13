@@ -25,6 +25,13 @@ export class ConfigManager {
   static initialize() {
     this.load();
     this.loadMcp();
+    this.loadFromEnv();
+  }
+
+  private static loadFromEnv() {
+    if (process.env.OMNICODE_API_KEY) {
+      this.setSecret('google.apiKey', process.env.OMNICODE_API_KEY);
+    }
   }
 
   static set(key: string, value: any) {

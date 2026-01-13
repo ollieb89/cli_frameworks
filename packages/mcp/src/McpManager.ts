@@ -49,7 +49,7 @@ export class McpManager {
 
       const client = new Client(
         {
-          name: 'gemini-cli-host',
+          name: 'omnicode-host',
           version: '0.1.0',
         },
         {
