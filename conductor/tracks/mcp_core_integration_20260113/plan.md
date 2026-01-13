@@ -12,7 +12,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 - [x] **Task 3:** Implement `ToolNormalizer`. [ab193d2]
     -   Convert MCP Tool schemas to internal `Tool` interface.
     -   Enforce Zod schema validation.
-- [ ] **Task 4:** Implement `PolicyGate`.
+- [x] **Task 4:** Implement `PolicyGate`. [edbc8d4]
     -   Define `Policy` interface (allowlist, confirmation rules).
     -   Implement permission check logic.
 
