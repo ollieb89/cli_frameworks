@@ -50,13 +50,13 @@ importers:
 
   packages/cli:
     dependencies:
-      '@gemini-cli/core':
+      '@omnicode/core':
         specifier: workspace:*
         version: link:../core
-      '@gemini-cli/mcp':
+      '@omnicode/mcp':
         specifier: workspace:*
         version: link:../mcp
-      '@gemini-cli/shared':
+      '@omnicode/shared':
         specifier: workspace:*
         version: link:../shared
       cli-table3:
