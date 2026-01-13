@@ -53,6 +53,9 @@ importers:
       '@gemini-cli/core':
         specifier: workspace:*
         version: link:../core
+      '@gemini-cli/mcp':
+        specifier: workspace:*
+        version: link:../mcp
       '@gemini-cli/shared':
         specifier: workspace:*
         version: link:../shared
