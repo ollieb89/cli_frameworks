@@ -34,10 +34,10 @@
     - [x] Case B (Args): Set `input` value to command string + space, close autocomplete.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: ChatView Integration' (Protocol in workflow.md)
 
-## Phase 4: Verification & Polish
-- [ ] Task: Manual Verification
-    - [ ] Verify popover appears on `/`
-    - [ ] Verify fuzzy filtering works
-    - [ ] Verify "Enter" behavior for both args and no-args commands
-- [ ] Task: Run full test suite `pnpm test`
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Verification & Polish' (Protocol in workflow.md)
+## Phase 4: Verification & Polish [checkpoint: c093f25]
+- [x] Task: Manual Verification
+    - [x] Verify popover appears on `/`
+    - [x] Verify fuzzy filtering works
+    - [x] Verify "Enter" behavior for both args and no-args commands
+- [x] Task: Run full test suite `pnpm test`
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Verification & Polish' (Protocol in workflow.md)
