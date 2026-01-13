@@ -9,9 +9,23 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import { ConfigManager } from './config/ConfigManager.js';
+import { McpManager } from '@gemini-cli/mcp';
 
 // Initialize Config
 ConfigManager.initialize();
+
+// Initialize MCP Servers
+const mcpManager = McpManager.getInstance();
+const mcpConfig = ConfigManager.getMcpConfig();
+if (mcpConfig.servers) {
+  for (const [id, config] of Object.entries(mcpConfig.servers)) {
+    if (!(config as any).disabled) {
+      mcpManager.connect({ id, ...(config as any) }).catch((err: Error) => {
+        console.error(`Failed to connect to MCP server ${id}:`, err.message);
+      });
+    }
+  }
+}
 
 // Initialize registry
 const commandsPath = path.resolve(__dirname, 'commands');
