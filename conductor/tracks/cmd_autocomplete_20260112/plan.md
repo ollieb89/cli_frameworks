@@ -12,15 +12,15 @@
     - [x] Ensure `CommandRegistry.list()` returns necessary metadata (name, namespace, description, args definition).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Utilities' (Protocol in workflow.md)
 
-## Phase 2: Autocomplete Component (TUI)
+## Phase 2: Autocomplete Component (TUI) [checkpoint: 62c95a2]
 - [x] [19d8e6c] Task: Create `AutocompleteList` component
     - [x] Create `packages/cli/src/ui/AutocompleteList.tsx`
     - [x] Props: `items: CommandDefinition[]`, `filter: string`, `onSelect: (cmd) => void`
     - [x] Implement rendering loop with slice for max height (e.g., show top 5)
     - [x] Add visual highlighting for active index
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Autocomplete Component (TUI)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Autocomplete Component (TUI)' (Protocol in workflow.md)
 
-## Phase 3: ChatView Integration
+## Phase 3: ChatView Integration [checkpoint: 62c95a2]
 - [x] [e5b07b8] Task: Integrate State in `ChatView.tsx`
     - [x] Add state for `isAutocompleteOpen`
     - [x] Add state for `selectedIndex`
@@ -32,7 +32,7 @@
     - [x] Logic: Check if command has required args.
     - [x] Case A (No Args): Call `handleSubmit` logic immediately with command string.
     - [x] Case B (Args): Set `input` value to command string + space, close autocomplete.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: ChatView Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: ChatView Integration' (Protocol in workflow.md)
 
 ## Phase 4: Verification & Polish
 - [ ] Task: Manual Verification
