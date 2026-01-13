@@ -34,13 +34,17 @@ export class McpManager {
         throw new Error(`MCP Server ${config.id} requires a command for stdio transport.`);
       }
 
+      const env: Record<string, string> = {};
+      for (const [key, value] of Object.entries({ ...process.env, ...(config.env || {}) })) {
+        if (value !== undefined) {
+          env[key] = value;
+        }
+      }
+
       const transport = new StdioClientTransport({
         command: config.command,
         args: config.args || [],
-        env: {
-          ...process.env,
-          ...(config.env || {}),
-        },
+        env,
       });
 
       const client = new Client(
