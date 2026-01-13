@@ -29,9 +29,7 @@ export class ConfigManager {
   }
 
   private static loadFromEnv() {
-    if (process.env.OMNICODE_API_KEY) {
-      this.setSecret('google.apiKey', process.env.OMNICODE_API_KEY);
-    }
+    // Reserved for future use when OMNICODE_API_KEY is needed for paid features
   }
 
   static set(key: string, value: any) {
