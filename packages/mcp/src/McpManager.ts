@@ -85,4 +85,24 @@ export class McpManager {
   public listServers(): string[] {
     return Array.from(this.clients.keys());
   }
+
+  public async getTools(id: string): Promise<any[]> {
+    const client = this.clients.get(id);
+    if (!client) {
+      throw new Error(`MCP Server ${id} is not connected.`);
+    }
+    const response = await client.listTools();
+    return response.tools;
+  }
+
+  public async callTool(id: string, toolName: string, args: any): Promise<any> {
+    const client = this.clients.get(id);
+    if (!client) {
+      throw new Error(`MCP Server ${id} is not connected.`);
+    }
+    return client.callTool({
+      name: toolName,
+      arguments: args,
+    });
+  }
 }
