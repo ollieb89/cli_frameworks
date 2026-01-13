@@ -12,6 +12,21 @@ export interface StreamResponse {
 
 export type StreamCallback = (chunk: StreamResponse) => void;
 
+export interface ToolDefinition {
+  name: string;
+  description: string;
+  parameters: {
+    type: 'object';
+    properties: Record<string, any>;
+    required?: string[];
+  };
+}
+
+export interface ToolCall {
+  toolName: string;
+  args: any;
+}
+
 export interface ProviderAdapter {
   /**
    * Returns the capabilities of the provider.
