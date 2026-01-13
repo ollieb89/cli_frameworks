@@ -34,7 +34,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 
 ## Phase 4: Integration & Security UX
 **Goal:** Connect the tools to the Agent and provide a secure UI.
-- [ ] **Task 1:** Create `McpToolAdapter` to bridge `McpManager` tools to the existing `CommandRegistry` or `Agent` tool list.
+- [x] **Task 1:** Create `McpToolAdapter` to bridge `McpManager` tools to the existing `CommandRegistry` or `Agent` tool list. [18f44c2]
 - [ ] **Task 2:** Implement Ink `ToolApproval` component.
     -   Show tool name, server, params.
     -   Options: "Allow Once", "Always Allow", "Deny".
