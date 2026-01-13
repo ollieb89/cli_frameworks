@@ -7,7 +7,7 @@ export class ConfigManager {
   private static mcpConfig: Record<string, any> = { servers: {}, policy: { default: 'confirm' } };
   
   private static getConfigDir() {
-    return path.join(os.homedir(), '.gemini-cli');
+    return path.join(os.homedir(), '.omnicode');
   }
 
   private static getConfigPath() {
@@ -19,7 +19,7 @@ export class ConfigManager {
   }
 
   private static getProjectMcpPath() {
-    return path.join(process.cwd(), '.gemini', 'mcp.json');
+    return path.join(process.cwd(), '.omnicode', 'mcp.json');
   }
 
   static initialize() {
