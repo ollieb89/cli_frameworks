@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../registry/types.js';
-import { VERSION, APP_NAME } from '@gemini-cli/shared';
+import { VERSION, APP_NAME } from '@omnicode/shared';
 
 const versionCommand: CommandDefinition = {
   namespace: 'global',

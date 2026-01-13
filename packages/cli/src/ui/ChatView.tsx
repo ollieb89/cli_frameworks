@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, useInput, useApp } from 'ink';
 import TextInput from 'ink-text-input';
-import { ProviderAdapter } from '@gemini-cli/core';
+import { ProviderAdapter } from '@omnicode/core';
 import { CommandRegistry } from '../registry/CommandRegistry.js';
 import { CommandDefinition } from '../registry/types.js';
 import { fuzzyScore } from '../utils/fuzzy.js';

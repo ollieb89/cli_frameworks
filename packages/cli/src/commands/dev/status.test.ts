@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import statusCommand from './status.js';
-import { ProviderRegistry } from '@gemini-cli/core';
+import { ProviderRegistry } from '@omnicode/core';
 
 // Mock ProviderRegistry
-vi.mock('@gemini-cli/core', () => ({
+vi.mock('@omnicode/core', () => ({
   ProviderRegistry: {
     getDefault: vi.fn(),
     get: vi.fn()

@@ -1,4 +1,4 @@
-import { GeminiAdapter } from '@gemini-cli/core';
+import { GeminiAdapter } from '@omnicode/core';
 import { ConfigManager } from '../config/ConfigManager.js';
 
 export class ProviderFactory {

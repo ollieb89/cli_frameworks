@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { ConfigManager } from './ConfigManager.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 
-vi.mock('@gemini-cli/mcp', () => {
+vi.mock('@omnicode/mcp', () => {
   return {
     McpManager: {
       getInstance: vi.fn().mockReturnValue({

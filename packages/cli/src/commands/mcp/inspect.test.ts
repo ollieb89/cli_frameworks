@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import inspectCommand from './inspect.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 
-vi.mock('@gemini-cli/mcp', () => ({
+vi.mock('@omnicode/mcp', () => ({
   McpManager: {
     getInstance: vi.fn().mockReturnValue({
       getTools: vi.fn().mockResolvedValue([{ name: 'tool1', description: 'desc1' }]),

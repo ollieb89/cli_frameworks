@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ProviderFactory } from './ProviderFactory.js';
 import { ConfigManager } from '../config/ConfigManager.js';
-import { GeminiAdapter } from '@gemini-cli/core';
+import { GeminiAdapter } from '@omnicode/core';
 
 vi.mock('../config/ConfigManager.js');
-vi.mock('@gemini-cli/core');
+vi.mock('@omnicode/core');
 
 describe('ProviderFactory', () => {
   beforeEach(() => {

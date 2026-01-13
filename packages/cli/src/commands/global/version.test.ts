@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import versionCommand from './version.js';
-import { VERSION, APP_NAME } from '@gemini-cli/shared';
+import { VERSION, APP_NAME } from '@omnicode/shared';
 
 describe('Version Command', () => {
   it('should have correct metadata', () => {

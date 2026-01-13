@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import { ConfigManager } from './config/ConfigManager.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 
 // Initialize Config
 ConfigManager.initialize();

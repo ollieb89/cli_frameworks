@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../registry/types.js';
 import { ConfigManager } from '../../config/ConfigManager.js';
-import { GoogleAuthProvider } from '@gemini-cli/core';
+import { GoogleAuthProvider } from '@omnicode/core';
 import { OAuthServer } from '../../utils/OAuthServer.js';
 import open from 'open';
 

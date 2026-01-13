@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../registry/types.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 import os from 'os';
 
 const doctorCommand: CommandDefinition = {

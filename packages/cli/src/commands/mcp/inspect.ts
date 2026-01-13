@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../registry/types.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 
 const inspectCommand: CommandDefinition = {
   namespace: 'mcp',

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import listCommand from './list.js';
-import { McpManager } from '@gemini-cli/mcp';
+import { McpManager } from '@omnicode/mcp';
 
-vi.mock('@gemini-cli/mcp', () => ({
+vi.mock('@omnicode/mcp', () => ({
   McpManager: {
     getInstance: vi.fn().mockReturnValue({
       listServers: vi.fn().mockReturnValue(['test-server']),

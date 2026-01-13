@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../registry/types.js';
-import { ProviderRegistry } from '@gemini-cli/core';
-import { APP_NAME, VERSION } from '@gemini-cli/shared';
+import { ProviderRegistry } from '@omnicode/core';
+import { APP_NAME, VERSION } from '@omnicode/shared';
 
 const statusCommand: CommandDefinition = {
   namespace: 'dev',
