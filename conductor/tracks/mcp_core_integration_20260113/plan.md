@@ -1,0 +1,46 @@
+# Plan: MCP Core Integration (Host/Client First)
+
+## Objective
+Implement a robust Model Context Protocol (MCP) Host implementation for Gemini CLI, enabling it to connect to external MCP servers (filesystem, git, postgres, etc.) and expose their tools to the internal agent router. This serves as the foundation for the "Framework Abstraction Layer" tool plane.
+
+## Phase 1: Foundation & Core Packages
+**Goal:** Establish the `packages/mcp` package and core infrastructure.
+- [x] **Task 1:** Initialize `packages/mcp` workspace package with `@modelcontextprotocol/sdk`. [0013c9a]
+- [ ] **Task 2:** Implement `McpManager` (Singleton) in `packages/mcp`.
+    -   Support `stdio` transport.
+    -   Handle connection lifecycle (connect, disconnect, health).
+- [ ] **Task 3:** Implement `ToolNormalizer`.
+    -   Convert MCP Tool schemas to internal `Tool` interface.
+    -   Enforce Zod schema validation.
+- [ ] **Task 4:** Implement `PolicyGate`.
+    -   Define `Policy` interface (allowlist, confirmation rules).
+    -   Implement permission check logic.
+
+## Phase 2: Configuration & Discovery
+**Goal:** Allow users to configure MCP servers via standard config files.
+- [ ] **Task 1:** Define `McpConfig` schema (`servers`, `globalPolicy`).
+- [ ] **Task 2:** Update `ConfigManager` (in `packages/cli`) to load `mcp.json` hierarchically:
+    -   Global: `~/.gemini-cli/mcp.json`
+    -   Project: `./.gemini/mcp.json`
+- [ ] **Task 3:** Integrate `McpManager` with `ConfigManager` to auto-load servers on startup.
+
+## Phase 3: CLI Commands (/mcp Namespace)
+**Goal:** Provide user-facing management of the MCP subsystem.
+- [ ] **Task 1:** Create `packages/cli/src/commands/mcp/` directory.
+- [ ] **Task 2:** Implement `/mcp:doctor` (Health check, SDK version, Node path).
+- [ ] **Task 3:** Implement `/mcp:list` (Show connected servers, status, tool count).
+- [ ] **Task 4:** Implement `/mcp:inspect <server>` (JSON dump of tools/resources/prompts).
+- [ ] **Task 5:** Implement `/mcp:add` (Interactive Ink wizard to append to config).
+
+## Phase 4: Integration & Security UX
+**Goal:** Connect the tools to the Agent and provide a secure UI.
+- [ ] **Task 1:** Create `McpToolAdapter` to bridge `McpManager` tools to the existing `CommandRegistry` or `Agent` tool list.
+- [ ] **Task 2:** Implement Ink `ToolApproval` component.
+    -   Show tool name, server, params.
+    -   Options: "Allow Once", "Always Allow", "Deny".
+- [ ] **Task 3:** Wire `PolicyGate` into the tool execution flow (pre-execution hook).
+
+## Phase 5: Verification
+- [ ] **Task 1:** Verify connection to a standard MCP server (e.g., `sqlite` or `filesystem`).
+- [ ] **Task 2:** Verify tool execution and output handling.
+- [ ] **Task 3:** Verify security gates and configuration loading.
