@@ -3,7 +3,7 @@
 ## Objective
 Implement a robust Model Context Protocol (MCP) Host implementation for Gemini CLI, enabling it to connect to external MCP servers (filesystem, git, postgres, etc.) and expose their tools to the internal agent router. This serves as the foundation for the "Framework Abstraction Layer" tool plane.
 
-## Phase 1: Foundation & Core Packages
+## Phase 1: Foundation & Core Packages [checkpoint: b0c1741]
 **Goal:** Establish the `packages/mcp` package and core infrastructure.
 - [x] **Task 1:** Initialize `packages/mcp` workspace package with `@modelcontextprotocol/sdk`. [0013c9a]
 - [x] **Task 2:** Implement `McpManager` (Singleton) in `packages/mcp`. [e78b953]
