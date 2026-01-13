@@ -21,14 +21,14 @@
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Autocomplete Component (TUI)' (Protocol in workflow.md)
 
 ## Phase 3: ChatView Integration
-- [x] Task: Integrate State in `ChatView.tsx`
+- [x] [e5b07b8] Task: Integrate State in `ChatView.tsx`
     - [x] Add state for `isAutocompleteOpen`
     - [x] Add state for `selectedIndex`
     - [x] Detect `/` input trigger in `useInput` or existing `TextInput` change handler
-- [x] Task: Handle Key Events
+- [x] [e5b07b8] Task: Handle Key Events
     - [x] Intercept Up/Down arrows when autocomplete is open to change `selectedIndex`
     - [x] Intercept Enter to trigger selection logic
-- [x] Task: Implement Selection Logic
+- [x] [e5b07b8] Task: Implement Selection Logic
     - [x] Logic: Check if command has required args.
     - [x] Case A (No Args): Call `handleSubmit` logic immediately with command string.
     - [x] Case B (Args): Set `input` value to command string + space, close autocomplete.
