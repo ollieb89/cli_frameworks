@@ -133,12 +133,12 @@ export const ChatView: React.FC<ChatViewProps> = ({ provider, onExit }) => {
         {messages.map((m, i) => (
           <Box key={i} marginBottom={1} flexDirection="column">
             <Text color={m.role === 'user' ? 'cyan' : 'green'} bold>
-              {m.role === 'user' ? 'You:' : 'Gemini:'}
+              {m.role === 'user' ? 'You:' : 'OmniCode:'}
             </Text>
             <Text>{m.content}</Text>
           </Box>
         ))}
-        {isStreaming && <Text color="yellow">Gemini is thinking...</Text>}
+        {isStreaming && <Text color="yellow">OmniCode is thinking...</Text>}
       </Box>
       
       {isAutocompleteOpen && (

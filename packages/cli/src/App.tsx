@@ -11,7 +11,7 @@ import { fuzzyScore } from './utils/fuzzy.js';
 
 export const App: React.FC = () => {
   const [input, setInput] = useState('');
-  const [history, setHistory] = useState<string[]>(['Welcome to Gemini CLI Suite']);
+  const [history, setHistory] = useState<string[]>(['Welcome to OmniCode']);
   const [mode, setMode] = useState<'repl' | 'help' | 'chat'>('repl');
 
   // Autocomplete State
