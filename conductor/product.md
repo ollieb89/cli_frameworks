@@ -44,6 +44,7 @@ A modern, extensible CLI suite for AI-powered development, featuring a Framework
 - **Provider Authentication:** Integrated OAuth 2.0 (Google) and secure credential management for OpenAI and Anthropic.
 - **Interactive Chat Mode:** A dedicated TUI for real-time, streaming AI conversations with context awareness.
 - **Task Orchestration Engine:** A robust system for decomposing objectives into actionable tasks, integrated directly with Git for history and state management.
+- **Model Context Protocol (MCP) Support:** Full implementation as an MCP Host, enabling secure connection to external tools (filesystem, DBs, search) with interactive human-in-the-loop approvals.
 - **Specialized AI Agents:** Autonomous agents with focused tool access, such as a Code Quality Suite and a Test Engineer.
 
 # Guiding Principles

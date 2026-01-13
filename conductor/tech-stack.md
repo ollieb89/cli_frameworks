@@ -10,6 +10,8 @@
 - **Table Rendering:** cli-table3
 - **Interactive Input:** ink-text-input
 - **Authentication:** google-auth-library, open
+- **MCP Implementation:** @modelcontextprotocol/sdk
+- **Schema Validation:** zod
 - **AI Integration:** Google Generative AI (@google/generative-ai)
 - **Testing:** Vitest
 
