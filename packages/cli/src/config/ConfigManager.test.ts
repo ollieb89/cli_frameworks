@@ -10,7 +10,7 @@ describe('ConfigManager', () => {
   let tempDir: string;
 
   beforeEach(() => {
-    tempDir = '/tmp/gemini-cli-test-' + Date.now();
+    tempDir = '/tmp/omnicode-test-' + Date.now();
     vi.mocked(os.homedir).mockReturnValue(tempDir);
     if (fs.existsSync(tempDir)) {
       fs.rmSync(tempDir, { recursive: true, force: true });
@@ -33,7 +33,7 @@ describe('ConfigManager', () => {
   it('should persist values to disk', () => {
     ConfigManager.set('foo', 'bar');
     
-    const configPath = path.join(tempDir, '.gemini-cli', 'config.json');
+    const configPath = path.join(tempDir, '.omnicode', 'config.json');
     expect(fs.existsSync(configPath)).toBe(true);
     
     const fileContent = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
