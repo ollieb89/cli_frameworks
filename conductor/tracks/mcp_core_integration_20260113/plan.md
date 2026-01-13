@@ -6,7 +6,7 @@ Implement a robust Model Context Protocol (MCP) Host implementation for Gemini C
 ## Phase 1: Foundation & Core Packages
 **Goal:** Establish the `packages/mcp` package and core infrastructure.
 - [x] **Task 1:** Initialize `packages/mcp` workspace package with `@modelcontextprotocol/sdk`. [0013c9a]
-- [ ] **Task 2:** Implement `McpManager` (Singleton) in `packages/mcp`.
+- [x] **Task 2:** Implement `McpManager` (Singleton) in `packages/mcp`. [e78b953]
     -   Support `stdio` transport.
     -   Handle connection lifecycle (connect, disconnect, health).
 - [ ] **Task 3:** Implement `ToolNormalizer`.
