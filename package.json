@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "oc": "pnpm --filter @omnicode/cli start",
     "test": "vitest run",
     "build": "turbo build",
     "lint": "eslint .",
