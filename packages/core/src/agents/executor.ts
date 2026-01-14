@@ -1,6 +1,7 @@
 import { AgentDefinition } from './schemas.js';
 import { ProviderAdapter, StreamCallback, ChatMessage, ToolDefinition, ToolCall } from '../provider/ProviderAdapter.js';
 import { SkillMapper } from './SkillMapper.js';
+import { INTERNAL_TOOLS } from './InternalTools.js';
 
 export class AgentExecutor {
     private history: ChatMessage[] = [];
@@ -63,16 +64,34 @@ export class AgentExecutor {
     }
 
     private getAvailableTools(): ToolDefinition[] | undefined {
-        if (!this.agent.skills || !this.skillMapper) return undefined;
+        const tools: ToolDefinition[] = [];
+
+        // Add internal tools
+        tools.push(...Object.values(INTERNAL_TOOLS));
+
+        // Add skill-based tools
+        if (this.agent.skills && this.skillMapper) {
+            const skillTools = this.agent.skills
+                .map(id => this.skillMapper?.getSkill(id)?.tool)
+                // @ts-ignore
+                .filter((t): t is ToolDefinition => !!t);
+            tools.push(...skillTools);
+        }
         
-        return this.agent.skills
-            .map(id => this.skillMapper?.getSkill(id)?.tool)
-            // @ts-ignore - ToolDefinition mapping
-            .filter((t): t is ToolDefinition => !!t);
+        return tools.length > 0 ? tools : undefined;
     }
 
     private async handleToolCall(tc: ToolCall): Promise<any> {
-        // For skills, we return the skill content
+        // Handle Internal Tools
+        if (INTERNAL_TOOLS[tc.toolName]) {
+            try {
+                return await INTERNAL_TOOLS[tc.toolName].execute(tc.args);
+            } catch (err) {
+                return { error: `Internal tool execution failed: ${err}` };
+            }
+        }
+
+        // Handle Skills
         if (tc.toolName.startsWith('use_skill_')) {
             const skillId = tc.toolName.replace('use_skill_', '');
             const skill = this.skillMapper?.getSkill(skillId);
@@ -81,6 +100,6 @@ export class AgentExecutor {
                 name: skill?.name
             };
         }
-        return { error: 'Unknown tool' };
+        return { error: `Unknown tool: ${tc.toolName}` };
     }
 }

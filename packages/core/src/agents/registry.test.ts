@@ -3,9 +3,11 @@ import { AgentRegistry } from './registry.js';
 import { AgentLoader } from './loader.js';
 import fs from 'fs/promises';
 import path from 'path';
+import glob from 'fast-glob';
 
 vi.mock('fs/promises');
 vi.mock('./loader.js');
+vi.mock('fast-glob');
 
 describe('AgentRegistry', () => {
   let registry: AgentRegistry;
@@ -28,13 +30,8 @@ describe('AgentRegistry', () => {
     expect(registry.listAgents()).toHaveLength(2);
   });
 
-  it('should scan directory and load agents from .md files', async () => {
-    // Mock fs.readdir to return a list of files
-    vi.mocked(fs.readdir).mockResolvedValue(['agent1.md', 'ignore.txt', 'agent2.md'] as any);
-    
-    // Mock fs.stat to treat everything as file for simplicity, or we can just filter by extension in implementation
-    // The implementation should verify it's a file, but readdir with { withFileTypes: true } is better usually.
-    // Let's assume simple readdir + extension check for now.
+  it('should scan directory and load agents from .md files using glob', async () => {
+    vi.mocked(glob).mockResolvedValue(['agent1.md', 'agent2.md'] as any);
 
     const mockAgent1 = { id: 'agent1', name: 'Agent 1' };
     const mockAgent2 = { id: 'agent2', name: 'Agent 2' };
@@ -47,8 +44,8 @@ describe('AgentRegistry', () => {
 
     await registry.scan();
 
-    expect(fs.readdir).toHaveBeenCalledWith(mockBasePath);
-    expect(AgentLoader.load).toHaveBeenCalledTimes(2); // Should ignore .txt
+    expect(glob).toHaveBeenCalled();
+    expect(AgentLoader.load).toHaveBeenCalledTimes(2);
     expect(registry.getAgent('agent1')).toEqual(mockAgent1);
     expect(registry.getAgent('agent2')).toEqual(mockAgent2);
   });

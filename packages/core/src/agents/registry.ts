@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import glob from 'fast-glob';
 import { AgentDefinition } from './schemas.js';
 import { AgentLoader } from './loader.js';
 
@@ -22,22 +23,20 @@ export class AgentRegistry {
 
   async scan(): Promise<void> {
     try {
-      const files = await fs.readdir(this.basePath);
+      const patterns = ['**/agents/*.md'];
+      const files = await glob(patterns, { cwd: this.basePath });
       
       for (const file of files) {
-        if (file.endsWith('.md')) {
-            const fullPath = path.join(this.basePath, file);
-            try {
-                const agent = await AgentLoader.load(fullPath);
-                this.registerAgent(agent);
-            } catch (err) {
-                console.warn(`Skipping invalid agent file: ${file}`, err);
-            }
+        const fullPath = path.join(this.basePath, file);
+        try {
+            const agent = await AgentLoader.load(fullPath);
+            this.registerAgent(agent);
+        } catch (err) {
+            console.warn(`Skipping invalid agent file: ${file}`, err);
         }
       }
     } catch (error) {
-      // If directory doesn't exist, just warn and return empty
-      console.warn(`Agent directory not found: ${this.basePath}`);
+      console.warn(`Failed to scan agents directory: ${this.basePath}`, error);
     }
   }
 }

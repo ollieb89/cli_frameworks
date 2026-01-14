@@ -20,14 +20,14 @@ Goal: Build the engine that manages agent state, handles prompts, and maps skill
 - [x] Task: Implement executor and skill mapping logic (TDD Green Phase). 750603a
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Agent Execution Engine & Tool Mapping' (Protocol in workflow.md) f44b005
 
-## Phase 3: Core Agent Integration
+## Phase 3: Core Agent Integration [checkpoint: 6add602]
 Goal: Load and configure the three core agents with their specific personas and initial skill sets.
 
-- [ ] Task: Configure `context-manager` with file aggregation and memory skills.
-- [ ] Task: Configure `backend-architect` with API design and architecture patterns skills.
-- [ ] Task: Configure `docs-architect` with documentation generation skills.
-- [ ] Task: Implement basic internal tools for file summarization and memory access.
-- [ ] Task: Write verification tests for each core agent's persona loading.
+- [x] Task: Configure `context-manager` with file aggregation and memory skills. 6add602
+- [x] Task: Configure `backend-architect` with API design and architecture patterns skills. 6add602
+- [x] Task: Configure `docs-architect` with documentation generation skills. 6add602
+- [x] Task: Implement basic internal tools for file summarization and memory access. 6add602
+- [x] Task: Write verification tests for each core agent's persona loading. 6add602
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Core Agent Integration' (Protocol in workflow.md)
 
 ## Phase 4: Interface Integration (CLI & TUI)

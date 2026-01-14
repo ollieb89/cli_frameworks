@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import path from 'path';
 import matter from 'gray-matter';
 import { AgentDefinition, AgentSchema } from './schemas.js';
 
@@ -9,6 +10,7 @@ export class AgentLoader {
 
         // Construct the raw agent object
         const rawAgent = {
+            id: data.id || path.basename(filePath, '.md'),
             ...data,
             systemPrompt: body.trim()
         };

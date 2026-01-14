@@ -31,7 +31,7 @@ describe('AgentExecutor', () => {
             { role: 'system', content: 'SYSTEM_PROMPT' },
             { role: 'user', content: 'Hello' }
         ]),
-        undefined
+        expect.any(Array) // Contains INTERNAL_TOOLS
     );
   });
 
