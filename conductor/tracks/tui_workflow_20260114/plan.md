@@ -31,11 +31,15 @@
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Workflow UI Integrations' (Protocol in workflow.md)**
 
 ## Phase 3: Context Well Interactivity
-- [~] **Task 1: Context List Navigation**
-    - [ ] Write failing tests for arrow key navigation within the `LeftPane` (when focused).
-    - [ ] Implement `selectedIndex` state for the Context Well.
-    - [ ] Verify scrolling through long file lists.
-- [ ] **Task 2: Hybrid Viewer/Editor**
+- [x] **Task 1: Context List Navigation** 9b56b30
+    - [x] Write failing tests for arrow key navigation within the `LeftPane` (when focused).
+    - [x] Implement `selectedIndex` state for the Context Well.
+    - [x] Verify scrolling through long file lists.
+- [~] **Task 2: Hybrid Viewer/Editor**
+    - [ ] Write failing tests for `Enter` (View) and `o` (Open) commands.
+    - [ ] Implement TUI Modal for file previewing.
+    - [ ] Implement `open` / `xdg-open` non-blocking shell call for external editing.
+    - [ ] Verify external editor launches without blocking the TUI.
     - [ ] Write failing tests for `Enter` (View) and `o` (Open) commands.
     - [ ] Implement TUI Modal for file previewing.
     - [ ] Implement `open` / `xdg-open` non-blocking shell call for external editing.
