@@ -3,6 +3,7 @@ import { Box, Text } from 'ink';
 import { useTUIStore } from '../../store/tuiStore.js';
 import { ContextWell } from '../ContextWell.js';
 import { FALSwitcher } from '../FALSwitcher.js';
+import { openFile } from '../../utils/opener.js';
 
 export const LeftPane: React.FC<{ width: string | number }> = ({ width }) => {
   const { 
@@ -11,7 +12,8 @@ export const LeftPane: React.FC<{ width: string | number }> = ({ width }) => {
     setContextSelectedIndex, 
     agentName, 
     providerName, 
-    activePane 
+    activePane,
+    setModalFile
   } = useTUIStore();
   
   const isActive = activePane === 'left';
@@ -38,6 +40,8 @@ export const LeftPane: React.FC<{ width: string | number }> = ({ width }) => {
         isActive={isActive}
         selectedIndex={contextSelectedIndex}
         onSelect={setContextSelectedIndex}
+        onView={setModalFile}
+        onOpen={openFile}
       />
     </Box>
   );

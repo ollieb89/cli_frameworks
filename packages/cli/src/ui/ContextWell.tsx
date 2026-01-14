@@ -7,6 +7,7 @@ interface ContextWellProps {
   selectedIndex?: number;
   onSelect?: (index: number) => void;
   onOpen?: (file: string) => void;
+  onView?: (file: string) => void;
 }
 
 export const ContextWell: React.FC<ContextWellProps> = ({ 
@@ -14,7 +15,8 @@ export const ContextWell: React.FC<ContextWellProps> = ({
   isActive = false, 
   selectedIndex = 0,
   onSelect,
-  onOpen
+  onOpen,
+  onView
 }) => {
   useInput((input, key) => {
     if (!isActive || files.length === 0) return;
@@ -30,9 +32,7 @@ export const ContextWell: React.FC<ContextWellProps> = ({
     }
 
     if (key.return) {
-      // Enter -> View/Open logic (Phase 3 Task 2)
-      // For now we just mock or ignore, but implementation is needed for Task 2.
-      // Task 1 is just navigation.
+      onView?.(files[selectedIndex]);
     }
     
     if (input === 'o') {

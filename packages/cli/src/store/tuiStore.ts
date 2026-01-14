@@ -24,6 +24,8 @@ interface TUIStore {
   // Layout
   activePane: PaneType;
   setActivePane: (pane: PaneType) => void;
+  modalFile: string | null;
+  setModalFile: (file: string | null) => void;
 
   // Context (Left Pane)
   contextFiles: string[];
@@ -61,6 +63,8 @@ export const useTUIStore = create<TUIStore>((set) => ({
 
   activePane: 'center',
   setActivePane: (activePane) => set({ activePane }),
+  modalFile: null,
+  setModalFile: (modalFile) => set({ modalFile }),
 
   contextFiles: [],
   contextSelectedIndex: 0,

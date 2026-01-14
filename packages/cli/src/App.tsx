@@ -1,13 +1,26 @@
 import React, { useState, useMemo, useEffect } from 'react';
-// import { Box, Text, useInput, useApp } from 'ink';
 import { Box, Text, useInput, useApp } from 'ink';
-// ...
+import { parseCommand } from './parser/CommandParser.js';
+import { CommandRegistry } from './registry/CommandRegistry.js';
+import { HelpSearch } from './ui/HelpSearch.js';
+import { ChatView } from './ui/ChatView.js';
+import { ProviderFactory } from './utils/ProviderFactory.js';
+import { AutocompleteList } from './ui/AutocompleteList.js';
+import { CommandDefinition, CommandContext } from './registry/types.js';
+import { fuzzyScore } from './utils/fuzzy.js';
+import { useTUIStore, PaneType } from './store/tuiStore.js';
+import { LeftPane } from './ui/panes/LeftPane.js';
+import { CenterPane } from './ui/panes/CenterPane.js';
+import { RightPane } from './ui/panes/RightPane.js';
+import { FilePreviewModal } from './ui/FilePreviewModal.js';
+
 export const App: React.FC = () => {
   const { exit } = useApp();
   const {
     input, setInput, 
     history, addToHistory, 
-    activePane, setActivePane 
+    activePane, setActivePane,
+    modalFile, setModalFile
   } = useTUIStore();
 
   const [mode, setMode] = useState<'repl' | 'help' | 'chat'>('repl');
@@ -89,14 +102,101 @@ export const App: React.FC = () => {
       }
   };
 
-  /*
   useInput((inputStr: string, key: any) => {
-    // ...
-  });
-  */
+    // If modal is open, let it handle input via its own useInput or block here
+    // In Ink, useInput propagates to all. We might want to block global shortcuts if modal is open?
+    // Modal uses useInput too. If we don't want Ctrl+P etc to work, we check modalFile.
+    if (modalFile) return;
 
-  return null;
-  /*
+    // Safe Interruption (Ctrl+C)
+    if (key.ctrl && inputStr === 'c') {
+      const state = useTUIStore.getState().state;
+      if (state === 'THINKING' || state === 'EXECUTING') {
+        useTUIStore.setState({ state: 'IDLE' }); 
+        addToHistory('⚠ Operation Interrupted');
+        return;
+      }
+      
+      const now = Date.now();
+      if (now - lastCtrlCPress < 500) {
+        exit();
+      } else {
+        setLastCtrlCPress(now);
+        addToHistory('Press Ctrl+C again to exit');
+      }
+      return;
+    }
+
+    // Command Palette Toggle (Ctrl+P)
+    if (key.ctrl && inputStr === 'p') {
+        setIsPaletteOpen(prev => !prev);
+        setInput('');
+        return;
+    }
+
+    // Pane Switching
+    if (key.tab && !isAutocompleteOpen && !isPaletteOpen) {
+        const panes: PaneType[] = ['left', 'center', 'right'];
+        const currentIndex = panes.indexOf(activePane);
+        const nextIndex = (currentIndex + 1) % panes.length;
+        setActivePane(panes[nextIndex]);
+        return;
+    }
+
+    if (mode !== 'repl') {
+        if (key.escape && mode === 'help') setMode('repl');
+        return;
+    }
+
+    if (isAutocompleteOpen || isPaletteOpen) {
+        if (key.upArrow) {
+            setSelectedIndex(prev => Math.max(0, prev - 1));
+            return;
+        }
+        if (key.downArrow) {
+            setSelectedIndex(prev => Math.min(suggestions.length - 1, prev + 1));
+            return;
+        }
+        if (key.escape) {
+            setIsAutocompleteOpen(false);
+            setIsPaletteOpen(false);
+            return;
+        }
+    }
+
+    if (key.return) {
+      if ((isAutocompleteOpen || isPaletteOpen) && suggestions[selectedIndex]) {
+          const cmd = suggestions[selectedIndex];
+          const hasArgs = cmd.args && cmd.args.length > 0;
+          const cmdStr = `/${cmd.namespace}:${cmd.name}`;
+          
+          if (hasArgs) {
+              setInput(cmdStr + ' ');
+              setIsAutocompleteOpen(false);
+              setIsPaletteOpen(false);
+          } else {
+              addToHistory(`❯ ${cmdStr}`);
+              handleExecuteCommand(cmdStr);
+              setInput('');
+              setIsAutocompleteOpen(false);
+              setIsPaletteOpen(false);
+          }
+          return;
+      }
+
+      const commandText = input.trim();
+      if (commandText) {
+          addToHistory(`❯ ${commandText}`);
+          handleExecuteCommand(commandText);
+          setInput('');
+      }
+    } else if (key.backspace || key.delete) {
+      setInput(input.slice(0, -1));
+    } else if (!key.ctrl && !key.meta && !key.return && !key.upArrow && !key.downArrow && !key.leftArrow && !key.rightArrow && !key.tab) {
+      setInput(input + inputStr);
+    }
+  });
+
   if (mode === 'help') {
     return (
       <Box flexDirection="row" height="100%">
@@ -109,11 +209,50 @@ export const App: React.FC = () => {
 
   return (
     <Box flexDirection="column" height="100%">
-      // ... content
+      <Box paddingX={1} marginBottom={0}>
+        <Text bold>
+          <Text color="cyan">Omni</Text>
+          <Text color="white">Code</Text>
+        </Text>
+        <Text color="gray"> | </Text>
+        <Text color="gray" italic>The Unified AI CLI</Text>
+      </Box>
+
+      {modalFile && (
+        <FilePreviewModal filePath={modalFile} onClose={() => setModalFile(null)} />
+      )}
+
+      <Box flexDirection="row" flexGrow={1} display={modalFile ? 'none' : 'flex'}>
+        <LeftPane width="25%" />
+        <Box width="50%" flexDirection="column">
+            <CenterPane width="100%" />
+            {isPaletteOpen && (
+                <Box 
+                  position="absolute" 
+                  marginTop={5} 
+                  marginLeft={10} 
+                  flexDirection="column" 
+                  borderStyle="double" 
+                  borderColor="yellow"
+                  paddingX={1}
+                >
+                    <Text bold color="yellow"> COMMAND PALETTE </Text>
+                    <AutocompleteList items={suggestions} selectedIndex={selectedIndex} />
+                </Box>
+            )}
+            {!isPaletteOpen && isAutocompleteOpen && (
+                <Box position="absolute" marginTop={15} marginLeft={5}>
+                  <AutocompleteList items={suggestions} selectedIndex={selectedIndex} />
+                </Box>
+            )}
+        </Box>
+        <RightPane width="25%" />
+      </Box>
+      
+      <Box paddingX={1} justifyContent="space-between">
+        <Text color="gray">Tab: Switch Pane | Ctrl+P: Palette | Ctrl+C: Interrupt</Text>
+        <Text color="gray">v0.1.0</Text>
+      </Box>
     </Box>
   );
-  */
 };
-
-
-
