@@ -26,6 +26,19 @@ export const useTUIStateMachine = () => {
     setState('APPROVAL');
   };
 
+  const approveTool = () => {
+    setToolStatus('running');
+    setState('EXECUTING');
+    setActivePane('center');
+  };
+
+  const denyTool = () => {
+    setToolStatus('error');
+    setActiveTool(null);
+    setState('IDLE'); 
+    setActivePane('center');
+  };
+
   // Side Effect: When state becomes APPROVAL, focus the Right Pane
   useEffect(() => {
     if (state === 'APPROVAL') {
@@ -37,6 +50,8 @@ export const useTUIStateMachine = () => {
     state,
     submitMessage,
     transitionTo,
-    requestToolApproval
+    requestToolApproval,
+    approveTool,
+    denyTool
   };
 };
