@@ -13,11 +13,11 @@ Goal: Implement the core infrastructure to discover, load, and register agents f
 ## Phase 2: Agent Execution Engine & Tool Mapping
 Goal: Build the engine that manages agent state, handles prompts, and maps skills to executable tools.
 
-- [ ] Task: Implement `AgentExecutor` to handle the execution loop and prompt construction.
-- [ ] Task: Create `SkillMapper` to link agent `SKILL.md` definitions to MCP tools.
-- [ ] Task: Implement Skill-to-Tool resolution logic with validation.
-- [ ] Task: Write unit tests for executor and skill mapping (TDD Red Phase).
-- [ ] Task: Implement executor and skill mapping logic (TDD Green Phase).
+- [x] Task: Implement `AgentExecutor` to handle the execution loop and prompt construction. 750603a
+- [x] Task: Create `SkillMapper` to link agent `SKILL.md` definitions to MCP tools. 750603a
+- [x] Task: Implement Skill-to-Tool resolution logic with validation. 750603a
+- [x] Task: Write unit tests for executor and skill mapping (TDD Red Phase). 750603a
+- [x] Task: Implement executor and skill mapping logic (TDD Green Phase). 750603a
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Agent Execution Engine & Tool Mapping' (Protocol in workflow.md)
 
 ## Phase 3: Core Agent Integration

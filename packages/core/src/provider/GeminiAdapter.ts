@@ -1,5 +1,5 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { ProviderAdapter, ProviderCapabilities, StreamCallback } from './ProviderAdapter.js';
+import { GoogleGenerativeAI, Content, Part } from '@google/generative-ai';
+import { ProviderAdapter, ProviderCapabilities, StreamCallback, ChatMessage, ToolDefinition, ToolCall } from './ProviderAdapter.js';
 
 export interface GeminiConfig {
     apiKey?: string;
@@ -10,7 +10,7 @@ export interface GeminiConfig {
 export class GeminiAdapter implements ProviderAdapter {
   private genAI?: GoogleGenerativeAI;
   private accessToken?: string;
-  private modelName = 'gemini-3.0-flash';
+  private modelName = 'gemini-1.5-flash'; // Updated to a more stable model name if 3.0 is not yet widely available
 
   constructor(config: GeminiConfig | string) {
     if (typeof config === 'string') {
@@ -37,44 +37,84 @@ export class GeminiAdapter implements ProviderAdapter {
   }
 
   async listModels(): Promise<string[]> {
-    return ['gemini-3.0-flash', 'gemini-3.0-pro', 'gemini-2.0-flash', 'gemini-1.5-pro'];
+    return ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-2.0-flash-exp'];
   }
 
   async sendMessage(message: string): Promise<string> {
-    if (this.genAI) {
-        const model = this.genAI.getGenerativeModel({ model: this.modelName });
-        const result = await model.generateContent(message);
-        const response = await result.response;
-        return response.text();
-    } else if (this.accessToken) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.modelName}:generateContent`;
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${this.accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: message }] }]
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Gemini API Error: ${response.statusText} - ${await response.text()}`);
-        }
-        
-        const data = await response.json();
-        // @ts-ignore
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    }
-    
-    throw new Error('No valid credentials provided for GeminiAdapter');
+    const response = await this.chat([{ role: 'user', content: message }]);
+    return response.content;
   }
 
   async streamMessage(message: string, callback: StreamCallback): Promise<void> {
+    return this.streamChat([{ role: 'user', content: message }], callback);
+  }
+
+  async chat(messages: ChatMessage[], tools?: ToolDefinition[]): Promise<ChatMessage> {
     if (this.genAI) {
-        const model = this.genAI.getGenerativeModel({ model: this.modelName });
-        const result = await model.generateContentStream(message);
+        const model = this.genAI.getGenerativeModel({ 
+            model: this.modelName,
+            // @ts-ignore - Tools might have slight typing diffs in some SDK versions
+            tools: tools ? [{ functionDeclarations: tools }] : undefined
+        });
+
+        const systemMessage = messages.find(m => m.role === 'system');
+        const history: Content[] = messages
+            .filter(m => m.role !== 'system')
+            .map(m => ({
+                role: m.role === 'user' ? 'user' : 'model',
+                parts: this.mapMessageToParts(m)
+            }));
+
+        const chat = model.startChat({
+            history: history.slice(0, -1),
+            // @ts-ignore
+            systemInstruction: systemMessage ? { parts: [{ text: systemMessage.content }] } : undefined
+        });
+
+        const lastMessage = history[history.length - 1];
+        const result = await chat.sendMessage(lastMessage.parts);
+        const response = await result.response;
+        
+        const functionCalls = response.functionCalls();
+        const toolCalls: ToolCall[] | undefined = functionCalls?.map(fc => ({
+            toolName: fc.name,
+            args: fc.args
+        }));
+
+        return {
+            role: 'assistant',
+            content: response.text(),
+            toolCalls
+        };
+    }
+    
+    throw new Error('No valid credentials provided for GeminiAdapter (REST chat not implemented yet)');
+  }
+
+  async streamChat(messages: ChatMessage[], callback: StreamCallback, tools?: ToolDefinition[]): Promise<void> {
+     if (this.genAI) {
+        const model = this.genAI.getGenerativeModel({ 
+            model: this.modelName,
+            // @ts-ignore
+            tools: tools ? [{ functionDeclarations: tools }] : undefined
+        });
+
+        const systemMessage = messages.find(m => m.role === 'system');
+        const history: Content[] = messages
+            .filter(m => m.role !== 'system')
+            .map(m => ({
+                role: m.role === 'user' ? 'user' : 'model',
+                parts: this.mapMessageToParts(m)
+            }));
+
+        const chat = model.startChat({
+            history: history.slice(0, -1),
+            // @ts-ignore
+            systemInstruction: systemMessage ? { parts: [{ text: systemMessage.content }] } : undefined
+        });
+
+        const lastMessage = history[history.length - 1];
+        const result = await chat.sendMessageStream(lastMessage.parts);
         
         let fullText = '';
         for await (const chunk of result.stream) {
@@ -83,58 +123,28 @@ export class GeminiAdapter implements ProviderAdapter {
             callback({ text: chunkText, done: false });
         }
         callback({ text: '', done: true });
-    } else if (this.accessToken) {
-        // OAuth REST Streaming (Server-Sent Events)
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.modelName}:streamGenerateContent?alt=sse`;
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${this.accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: message }] }]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Gemini API Error: ${response.statusText}`);
-        }
-
-        const reader = response.body?.getReader();
-        if (!reader) throw new Error('Failed to get response body reader');
-
-        const decoder = new TextDecoder();
-        let buffer = '';
-
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            buffer += decoder.decode(value, { stream: true });
-            
-            // SSE parsing logic
-            const lines = buffer.split('\n');
-            buffer = lines.pop() || '';
-
-            for (const line of lines) {
-                if (line.startsWith('data: ')) {
-                    const jsonStr = line.slice(6);
-                    try {
-                        const data = JSON.parse(jsonStr);
-                        const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-                        if (text) {
-                            callback({ text, done: false });
-                        }
-                    } catch (e) {
-                        // Incomplete JSON or noise
-                    }
-                }
-            }
-        }
-        callback({ text: '', done: true });
-    } else {
-        throw new Error('No valid credentials provided for GeminiAdapter');
+        return;
     }
+    throw new Error('No valid credentials provided for GeminiAdapter');
+  }
+
+  private mapMessageToParts(m: ChatMessage): Part[] {
+      if (m.toolCalls) {
+          return m.toolCalls.map(tc => ({
+              functionCall: {
+                  name: tc.toolName,
+                  args: tc.args
+              }
+          }));
+      }
+      if (m.role === 'tool' && m.toolCallId) {
+          return [{
+              functionResponse: {
+                  name: m.toolCallId,
+                  response: JSON.parse(m.content)
+              }
+          }];
+      }
+      return [{ text: m.content }];
   }
 }

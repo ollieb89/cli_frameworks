@@ -16,8 +16,10 @@ export const SkillSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
+  content: z.string().optional(),
   tool: ToolSchema
 });
+
 
 export type SkillDefinition = z.infer<typeof SkillSchema>;
 

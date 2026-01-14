@@ -8,6 +8,7 @@ export interface ProviderCapabilities {
 export interface StreamResponse {
   text: string;
   done: boolean;
+  toolCalls?: ToolCall[];
 }
 
 export type StreamCallback = (chunk: StreamResponse) => void;
@@ -23,8 +24,16 @@ export interface ToolDefinition {
 }
 
 export interface ToolCall {
+  id?: string;
   toolName: string;
   args: any;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'assistant' | 'system' | 'tool';
+  content: string;
+  toolCalls?: ToolCall[];
+  toolCallId?: string; // For role: 'tool'
 }
 
 export interface ProviderAdapter {
@@ -40,14 +49,23 @@ export interface ProviderAdapter {
 
   /**
    * Sends a message to the provider and returns the text response.
-   * @param message The prompt to send
+   * @deprecated Use chat() for better agent support
    */
   sendMessage(message: string): Promise<string>;
 
   /**
    * Sends a message and streams the response.
-   * @param message The prompt to send
-   * @param callback Function called for each chunk of data
+   * @deprecated Use streamChat() for better agent support
    */
   streamMessage(message: string, callback: StreamCallback): Promise<void>;
+
+  /**
+   * Multi-turn chat with optional tool support.
+   */
+  chat(messages: ChatMessage[], tools?: ToolDefinition[]): Promise<ChatMessage>;
+
+  /**
+   * Streaming multi-turn chat with optional tool support.
+   */
+  streamChat(messages: ChatMessage[], callback: StreamCallback, tools?: ToolDefinition[]): Promise<void>;
 }
