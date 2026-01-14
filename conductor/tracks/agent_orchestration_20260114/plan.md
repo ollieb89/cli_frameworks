@@ -1,6 +1,6 @@
 # Implementation Plan: Agent Orchestration System & Core Agents
 
-## Phase 1: Foundation & Agent Registry
+## Phase 1: Foundation & Agent Registry [checkpoint: 750603a]
 Goal: Implement the core infrastructure to discover, load, and register agents from the filesystem.
 
 - [x] Task: Define Agent Definition Schemas (Zod) for Personas, Skills, and Commands.
@@ -8,7 +8,7 @@ Goal: Implement the core infrastructure to discover, load, and register agents f
 - [x] Task: Create `AgentLoader` to parse Markdown-based agent definitions.
 - [x] Task: Write unit tests for registry and loader (TDD Red Phase).
 - [x] Task: Implement registry and loader logic (TDD Green Phase).
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Agent Registry' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Agent Registry' (Protocol in workflow.md) b8d1e2f
 
 ## Phase 2: Agent Execution Engine & Tool Mapping
 Goal: Build the engine that manages agent state, handles prompts, and maps skills to executable tools.
