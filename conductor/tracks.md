@@ -5,7 +5,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## [x] Track: Implement the core interaction logic and state management for the OmniCode TUI.
-*Link: [./conductor/tracks/tui_workflow_20260114/](./conductor/tracks/tui_workflow_20260114/)*
+*Link: [./conductor/archive/tui_workflow_20260114/](./conductor/archive/tui_workflow_20260114/)*
 
 ## [x] Track: OmniCode TUI Architecture & UX Implementation
 *Link: [./conductor/archive/tui_implementation_20260114/](./conductor/archive/tui_implementation_20260114/)*
