@@ -35,7 +35,10 @@ interface TUIStore {
   messages: ChatMessage[];
   addMessage: (msg: ChatMessage) => void;
   isThinking: boolean;
-  thinkingStep: string;
+  thoughtHistory: string[];
+  setThinking: (isThinking: boolean) => void;
+  addThought: (thought: string) => void;
+  clearThoughts: () => void;
 
   // Tools (Right Pane)
   activeTool: ToolCall | null;
@@ -65,7 +68,10 @@ export const useTUIStore = create<TUIStore>((set) => ({
   messages: [],
   addMessage: (msg) => set((s) => ({ messages: [...s.messages, msg] })),
   isThinking: false,
-  thinkingStep: '',
+  thoughtHistory: [],
+  setThinking: (isThinking) => set({ isThinking }),
+  addThought: (thought) => set((s) => ({ thoughtHistory: [...s.thoughtHistory, thought] })),
+  clearThoughts: () => set({ thoughtHistory: [] }),
 
   activeTool: null,
   toolStatus: 'pending',
