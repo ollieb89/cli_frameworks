@@ -42,7 +42,7 @@ A modern, extensible CLI suite for AI-powered development, featuring a Framework
 - **Dynamic Command Registry:** Automatic discovery and registration of commands from the filesystem.
 - **Global Utility Commands:** Core commands like `/help`, `/version`, and `/config` for system management.
 - **Provider Authentication:** Integrated OAuth 2.0 (Google) and secure credential management for OpenAI and Anthropic.
-- **Interactive Chat Mode:** A dedicated TUI for real-time, streaming AI conversations with context awareness.
+- **Interactive Chat Mode (Glass Cockpit):** A sophisticated 3-pane TUI (Context, Chat, Workbench) for real-time, streaming AI conversations with deep context awareness and interactive tool management.
 - **Task Orchestration Engine:** A robust system for decomposing objectives into actionable tasks, integrated directly with Git for history and state management.
 - **Model Context Protocol (MCP) Support:** Full implementation as an MCP Host, enabling secure connection to external tools (filesystem, DBs, search) with interactive human-in-the-loop approvals.
 - **Specialized AI Agents:** Autonomous agents with focused tool access, such as a Code Quality Suite and a Test Engineer.

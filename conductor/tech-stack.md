@@ -11,6 +11,7 @@
 - **Command Discovery:** fast-glob
 - **Table Rendering:** cli-table3
 - **Interactive Input:** ink-text-input
+- **State Management:** zustand
 - **Authentication:** google-auth-library, open
 - **MCP Implementation:** @modelcontextprotocol/sdk
 - **Schema Validation:** zod
@@ -46,4 +47,4 @@
 
 - **Build System:** **Turborepo** + **esbuild** for high-performance builds in a monorepo structure.
 - **Package Manager:** **pnpm** for efficient dependency management.
-- **Testing:** **Jest** or **Vitest** for unit and integration testing.
+- **Testing:** **Vitest** (non-watch mode by default) for unit and integration testing.
