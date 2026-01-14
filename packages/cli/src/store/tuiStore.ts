@@ -27,7 +27,9 @@ interface TUIStore {
 
   // Context (Left Pane)
   contextFiles: string[];
+  contextSelectedIndex: number;
   setContextFiles: (files: string[]) => void;
+  setContextSelectedIndex: (index: number) => void;
   agentName: string;
   providerName: string;
 
@@ -61,7 +63,9 @@ export const useTUIStore = create<TUIStore>((set) => ({
   setActivePane: (activePane) => set({ activePane }),
 
   contextFiles: [],
+  contextSelectedIndex: 0,
   setContextFiles: (contextFiles) => set({ contextFiles }),
+  setContextSelectedIndex: (contextSelectedIndex) => set({ contextSelectedIndex }),
   agentName: 'OmniAgent',
   providerName: 'Gemini',
 
