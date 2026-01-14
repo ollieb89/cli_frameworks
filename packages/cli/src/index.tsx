@@ -31,4 +31,4 @@ if (mcpConfig.servers) {
 const commandsPath = path.resolve(__dirname, 'commands');
 await CommandRegistry.loadFrom(commandsPath);
 
-render(<App />);
+render(<App />, { exitOnCtrlC: false });
