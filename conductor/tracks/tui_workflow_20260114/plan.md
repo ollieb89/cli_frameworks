@@ -23,15 +23,15 @@
     - [x] Write failing tests for thought history accumulation in the store.
     - [x] Update `<ThinkingIndicator />` to render the granular log.
     - [x] Verify auto-scrolling of the thought log.
-- [~] **Task 2: Tool Approval Focus Flow**
-    - [x] Write failing tests for automatic focus shift to `Right` pane on `APPROVAL` state. (Already covered in Phase 1 Task 1)
-    - [x] Implement focus shift side-effect in `useTUIStateMachine`. (Already done in Phase 1 Task 1)
-    - [ ] Implement `y`/`n`/`m` keybindings in `RightPane` (accessible only in `APPROVAL` state).
-    - [ ] Verify focus returns to `Center` after approval/denial.
+- [x] **Task 2: Tool Approval Focus Flow** b43120a
+    - [x] Write failing tests for automatic focus shift to `Right` pane on `APPROVAL` state.
+    - [x] Implement focus shift side-effect in `useTUIStateMachine`.
+    - [x] Implement `y`/`n`/`m` keybindings in `RightPane` (accessible only in `APPROVAL` state).
+    - [x] Verify focus returns to `Center` after approval/denial.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Workflow UI Integrations' (Protocol in workflow.md)**
 
 ## Phase 3: Context Well Interactivity
-- [ ] **Task 1: Context List Navigation**
+- [~] **Task 1: Context List Navigation**
     - [ ] Write failing tests for arrow key navigation within the `LeftPane` (when focused).
     - [ ] Implement `selectedIndex` state for the Context Well.
     - [ ] Verify scrolling through long file lists.
