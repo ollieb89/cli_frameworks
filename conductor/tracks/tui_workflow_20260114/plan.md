@@ -19,13 +19,13 @@
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: State Machine & Navigation Core' (Protocol in workflow.md)**
 
 ## Phase 2: Workflow UI Integrations
-- [~] **Task 1: Thinking Indicator Log**
-    - [ ] Write failing tests for thought history accumulation in the store.
-    - [ ] Update `<ThinkingIndicator />` to render the granular log.
-    - [ ] Verify auto-scrolling of the thought log.
-- [ ] **Task 2: Tool Approval Focus Flow**
-    - [ ] Write failing tests for automatic focus shift to `Right` pane on `APPROVAL` state.
-    - [ ] Implement focus shift side-effect in `useTUIStateMachine`.
+- [x] **Task 1: Thinking Indicator Log** 4f246b3
+    - [x] Write failing tests for thought history accumulation in the store.
+    - [x] Update `<ThinkingIndicator />` to render the granular log.
+    - [x] Verify auto-scrolling of the thought log.
+- [~] **Task 2: Tool Approval Focus Flow**
+    - [x] Write failing tests for automatic focus shift to `Right` pane on `APPROVAL` state. (Already covered in Phase 1 Task 1)
+    - [x] Implement focus shift side-effect in `useTUIStateMachine`. (Already done in Phase 1 Task 1)
     - [ ] Implement `y`/`n`/`m` keybindings in `RightPane` (accessible only in `APPROVAL` state).
     - [ ] Verify focus returns to `Center` after approval/denial.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Workflow UI Integrations' (Protocol in workflow.md)**
