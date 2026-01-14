@@ -45,7 +45,6 @@ export const FilePreviewModal: React.FC<FilePreviewModalProps> = ({ filePath, on
       borderStyle="double" 
       borderColor="white" 
       flexDirection="column"
-      zIndex={999}
     >
       <Box paddingX={1} borderStyle="single" borderBottom={false} borderTop={false} borderLeft={false} borderRight={false}>
         <Text bold>{filePath}</Text>

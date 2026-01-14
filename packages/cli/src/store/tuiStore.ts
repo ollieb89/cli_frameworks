@@ -43,6 +43,12 @@ interface TUIStore {
   setThinking: (isThinking: boolean) => void;
   addThought: (thought: string) => void;
   clearThoughts: () => void;
+  
+  // Agents
+  availableAgents: any[];
+  setAvailableAgents: (agents: any[]) => void;
+  activeAgentId: string | null;
+  setActiveAgentId: (id: string | null) => void;
 
   // Tools (Right Pane)
   activeTool: ToolCall | null;
@@ -80,6 +86,11 @@ export const useTUIStore = create<TUIStore>((set) => ({
   setThinking: (isThinking) => set({ isThinking }),
   addThought: (thought) => set((s) => ({ thoughtHistory: [...s.thoughtHistory, thought] })),
   clearThoughts: () => set({ thoughtHistory: [] }),
+
+  availableAgents: [],
+  setAvailableAgents: (availableAgents) => set({ availableAgents }),
+  activeAgentId: null,
+  setActiveAgentId: (activeAgentId) => set({ activeAgentId }),
 
   activeTool: null,
   toolStatus: 'pending',

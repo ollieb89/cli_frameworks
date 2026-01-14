@@ -14,28 +14,40 @@ import { CenterPane } from './ui/panes/CenterPane.js';
 import { RightPane } from './ui/panes/RightPane.js';
 import { FilePreviewModal } from './ui/FilePreviewModal.js';
 
+import path from 'path';
+import { AgentRegistry } from '@omnicode/core';
+
+import { useLLMInteraction } from './hooks/useLLMInteraction.js';
+import { useTUIStateMachine } from './hooks/useTUIStateMachine.js';
+
 export const App: React.FC = () => {
   const { exit } = useApp();
+  
+  // Initialize LLM loop
+  useLLMInteraction();
+  const { submitMessage } = useTUIStateMachine();
+
   const {
     input, setInput, 
     history, addToHistory, 
     activePane, setActivePane,
-    modalFile, setModalFile
+    modalFile, setModalFile,
+    setAvailableAgents
   } = useTUIStore();
 
   const [mode, setMode] = useState<'repl' | 'help' | 'chat'>('repl');
-  const [lastCtrlCPress, setLastCtrlCPress] = useState(0);
-
-  // Autocomplete & Command Palette State
-  const [allCommands, setAllCommands] = useState<CommandDefinition[]>([]);
-  const [suggestions, setSuggestions] = useState<CommandDefinition[]>([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
-  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
-
+// ...
   useEffect(() => {
     setAllCommands(CommandRegistry.list());
+    
+    // Load Agents
+    const agentsPath = path.join(process.cwd(), 'agents');
+    const registry = new AgentRegistry(agentsPath);
+    registry.scan().then(() => {
+        setAvailableAgents(registry.listAgents());
+    });
   }, []);
+
 
   useEffect(() => {
     if (mode === 'repl' && (input.startsWith('/') || isPaletteOpen)) {
@@ -175,8 +187,12 @@ export const App: React.FC = () => {
               setIsAutocompleteOpen(false);
               setIsPaletteOpen(false);
           } else {
-              addToHistory(`❯ ${cmdStr}`);
-              handleExecuteCommand(cmdStr);
+              if (mode === 'chat') {
+                  submitMessage(cmdStr);
+              } else {
+                  addToHistory(`❯ ${cmdStr}`);
+                  handleExecuteCommand(cmdStr);
+              }
               setInput('');
               setIsAutocompleteOpen(false);
               setIsPaletteOpen(false);
@@ -184,10 +200,14 @@ export const App: React.FC = () => {
           return;
       }
 
-      const commandText = input.trim();
-      if (commandText) {
-          addToHistory(`❯ ${commandText}`);
-          handleExecuteCommand(commandText);
+      const text = input.trim();
+      if (text) {
+          if (mode === 'chat') {
+              submitMessage(text);
+          } else {
+              addToHistory(`❯ ${text}`);
+              handleExecuteCommand(text);
+          }
           setInput('');
       }
     } else if (key.backspace || key.delete) {

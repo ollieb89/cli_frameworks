@@ -12,3 +12,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## [x] Track: Implement command loading/autocomplete with popover and fuzzy filtering when typing /
 *Link: [./conductor/archive/cmd_autocomplete_20260112/](./conductor/archive/cmd_autocomplete_20260112/)*
+
+---
+
+## [~] Track: Agent Orchestration System & Core Agents
+*Link: [./conductor/tracks/agent_orchestration_20260114/](./conductor/tracks/agent_orchestration_20260114/)*

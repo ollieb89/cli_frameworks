@@ -8,11 +8,19 @@ export const useTUIStateMachine = () => {
     addMessage, 
     setActivePane, 
     setActiveTool, 
-    setToolStatus 
+    setToolStatus,
+    setActiveAgentId
   } = useTUIStore();
 
   const submitMessage = (content: string) => {
     addMessage({ role: 'user', content });
+    
+    if (content.startsWith('@')) {
+        const parts = content.split(' ');
+        const agentId = parts[0].slice(1);
+        setActiveAgentId(agentId);
+    }
+
     setState('PLANNING');
   };
 

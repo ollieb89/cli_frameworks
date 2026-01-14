@@ -23,7 +23,7 @@ describe('ConfigManager - Hierarchical MCP Config', () => {
   });
 
   it('should load global mcp.json', () => {
-    const globalPath = path.join(mockHomedir, '.gemini-cli', 'mcp.json');
+    const globalPath = path.join(mockHomedir, '.omnicode', 'mcp.json');
     const globalConfig = {
       servers: { global: { transport: 'stdio', command: 'echo' } }
     };
@@ -40,8 +40,8 @@ describe('ConfigManager - Hierarchical MCP Config', () => {
   });
 
   it('should merge project mcp.json into global', () => {
-    const globalPath = path.join(mockHomedir, '.gemini-cli', 'mcp.json');
-    const projectPath = path.join(mockCwd, '.gemini', 'mcp.json');
+    const globalPath = path.join(mockHomedir, '.omnicode', 'mcp.json');
+    const projectPath = path.join(mockCwd, '.omnicode', 'mcp.json');
     
     const globalConfig = {
       servers: { global: { transport: 'stdio', command: 'echo' } }

@@ -30,14 +30,14 @@ Goal: Load and configure the three core agents with their specific personas and 
 - [x] Task: Write verification tests for each core agent's persona loading. 6add602
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Core Agent Integration' (Protocol in workflow.md) eab13ed
 
-## Phase 4: Interface Integration (CLI & TUI)
+## Phase 4: Interface Integration (CLI & TUI) [checkpoint: e99c6fd]
 Goal: Expose the agent system through the command line and the interactive "Glass Cockpit" TUI.
 
-- [ ] Task: Implement `omnicode agent list` and `omnicode agent run` commands.
-- [ ] Task: Integrate agent selection/mentions (@agent) into the TUI Chat pane.
-- [ ] Task: Update `tuiStore` to handle agent-specific state and streaming responses.
-- [ ] Task: Write integration tests for CLI commands and TUI store updates.
-- [ ] Task: Implement CLI/TUI integration logic.
+- [x] Task: Implement `omnicode agent list` and `omnicode agent run` commands. e99c6fd
+- [x] Task: Integrate agent selection/mentions (@agent) into the TUI Chat pane. e99c6fd
+- [x] Task: Update `tuiStore` to handle agent-specific state and streaming responses. e99c6fd
+- [x] Task: Write integration tests for CLI commands and TUI store updates. e99c6fd
+- [x] Task: Implement CLI/TUI integration logic. e99c6fd
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Interface Integration (CLI & TUI)' (Protocol in workflow.md)
 
 ## Phase 5: Validation & Final Verification

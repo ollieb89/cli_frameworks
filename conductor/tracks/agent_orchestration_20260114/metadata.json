@@ -1,0 +1,8 @@
+{
+  "track_id": "agent_orchestration_20260114",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-01-14T10:00:00Z",
+  "updated_at": "2026-01-14T10:00:00Z",
+  "description": "implement the usage of agents and then set up the following ones agents/agent-orchestration/agents/context-manager.md agents/backend-development/agents/backend-architect.md and agents/documentation-generation/agents/docs-architect.md and validate if they work we have the commands and the needed skills as well in those folders"
+}
