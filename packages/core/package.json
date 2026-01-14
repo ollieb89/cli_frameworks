@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "google-auth-library": "^10.5.0"
+    "google-auth-library": "^10.5.0",
+    "gray-matter": "^4.0.3",
+    "zod": "^3.25.76"
   }
 }
