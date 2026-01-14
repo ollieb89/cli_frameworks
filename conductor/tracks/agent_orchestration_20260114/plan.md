@@ -10,7 +10,7 @@ Goal: Implement the core infrastructure to discover, load, and register agents f
 - [x] Task: Implement registry and loader logic (TDD Green Phase).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Agent Registry' (Protocol in workflow.md) b8d1e2f
 
-## Phase 2: Agent Execution Engine & Tool Mapping
+## Phase 2: Agent Execution Engine & Tool Mapping [checkpoint: f44b005]
 Goal: Build the engine that manages agent state, handles prompts, and maps skills to executable tools.
 
 - [x] Task: Implement `AgentExecutor` to handle the execution loop and prompt construction. 750603a
@@ -18,7 +18,7 @@ Goal: Build the engine that manages agent state, handles prompts, and maps skill
 - [x] Task: Implement Skill-to-Tool resolution logic with validation. 750603a
 - [x] Task: Write unit tests for executor and skill mapping (TDD Red Phase). 750603a
 - [x] Task: Implement executor and skill mapping logic (TDD Green Phase). 750603a
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Agent Execution Engine & Tool Mapping' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Agent Execution Engine & Tool Mapping' (Protocol in workflow.md) f44b005
 
 ## Phase 3: Core Agent Integration
 Goal: Load and configure the three core agents with their specific personas and initial skill sets.
